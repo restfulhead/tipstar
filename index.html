@@ -90,7 +90,7 @@
                     <thead>
                     <tr>
                         <th>Description</th>
-                        <th>Total</th>
+                        <th class="hidden-xs">Total</th>
                         <th>Rounded</th>
                         <th class="hidden-xs"><span class="glyphicon glyphicon-question-sign"></span></th>
                     </tr>
@@ -98,37 +98,37 @@
                     <tbody>
                     <tr>
                         <td>{{percentage}}% of {{amount}} is</td>
-                        <td>{{resultPercentage}}</td>
+                        <td class="hidden-xs">{{resultPercentage}}</td>
                         <td>{{resultPercentage.toFixed(2)}}</td>
                         <td class="hidden-xs"><a href="#" class="popover-link glyphicon glyphicon-question-sign" rel="popover" data-placement="left" data-trigger="hover" data-content="(percentage / 100) * amount" data-original-title="{{percentage}}% of {{amount}} = {{resultPercentage.toFixed(2)}}"></a></td>
                     </tr>
                     <tr>
                         <td>{{amount}} is {{percentage}}% of</td>
-                        <td>{{resultAmount}}</td>
+                        <td class="hidden-xs">{{resultAmount}}</td>
                         <td>{{resultAmount.toFixed(2)}}</td>
                         <td class="hidden-xs"><a href="#" class="popover-link glyphicon glyphicon-question-sign" rel="popover" data-placement="left" data-trigger="hover" data-trigger="hover" data-content="amount / (percentage/100)" data-original-title="{{amount}} is {{percentage}}% of {{resultAmount.toFixed(2)}}"></a></td>
                     </tr>
                     <tr>
                         <td>{{amount}} plus {{percentage}}% is (i.e gross value)</td>
-                        <td>{{resultAdd}}</td>
+                        <td class="hidden-xs">{{resultAdd}}</td>
                         <td>{{resultAdd.toFixed(2)}}</td>
                         <td class="hidden-xs"><a href="#" class="popover-link glyphicon glyphicon-question-sign" rel="popover" data-placement="left" data-trigger="hover" data-content="amount + ((percentage / 100) * amount)" data-original-title="{{amount}} + {{percentage}}% = {{resultAdd.toFixed(2)}}"></a></td>
                     </tr>
                     <tr>
                         <td>if {{amount}} is after {{percentage}}% increase, then it was (i.e net value)</td>
-                        <td>{{resultIncreased }}</td>
+                        <td class="hidden-xs">{{resultIncreased }}</td>
                         <td>{{resultIncreased.toFixed(2)}}</td>
                         <td class="hidden-xs"><a href="#" class="popover-link glyphicon glyphicon-question-sign" rel="popover" data-placement="left" data-trigger="hover" data-content="amount / ((100+percentage)/100)" data-original-title="{{amount}} / {{increasedPercentage}}% = {{resultIncreased.toFixed(2)}}"></a></td>
                     </tr>
                     <tr>
                         <td>{{amount}} less {{percentage}}% is</td>
-                        <td>{{resultSubtract }}</td>
+                        <td class="hidden-xs">{{resultSubtract }}</td>
                         <td>{{resultSubtract.toFixed(2)}}</td>
                         <td class="hidden-xs"><a href="#" class="popover-link glyphicon glyphicon-question-sign" rel="popover" data-placement="left" data-trigger="hover" data-content="amount - ((percentage / 100) * amount)" data-original-title="{{amount}} - {{percentage}}% = {{resultSubtract.toFixed(2)}}"</a></td>
                     </tr>
                     <tr>
                         <td>if {{amount}} is after {{percentage}}% reduction, then it was</td>
-                        <td>{{resultReduced}}</td>
+                        <td class="hidden-xs">{{resultReduced}}</td>
                         <td>{{resultReduced.toFixed(2)}}</td>
                         <td class="hidden-xs"><a href="#" class="popover-link glyphicon glyphicon-question-sign" rel="popover" data-placement="left" data-trigger="hover" data-content="amount / ((100-percentage)/100)" data-original-title="{{amount}} / {{reducedPercentage}}% = {{resultReduced.toFixed(2)}}"></a></td>
                     </tr>
@@ -166,7 +166,7 @@
                     <thead>
                     <tr>
                         <th>Description</th>
-                        <th>Total</th>
+                        <th class="hidden-xs">Total</th>
                         <th>Rounded</th>
                         <th class="hidden-xs"><span class="glyphicon glyphicon-question-sign"></span></th>
                     </tr>
@@ -174,25 +174,25 @@
                     <tbody>
                     <tr>
                         <td>{{compareNumberA}} is what % of {{compareNumberB}} is</td>
-                        <td>{{resultNoAPercentage}}%</td>
+                        <td class="hidden-xs">{{resultNoAPercentage}}%</td>
                         <td>{{resultNoAPercentage.toFixed(2)}}%</td>
                         <td class="hidden-xs"><a href="#" class="popover-link glyphicon glyphicon-question-sign" rel="popover" data-placement="left" data-trigger="hover" data-content="(numberA / numberB) * 100" data-original-title="({{compareNumberA}} / {{compareNumberB}}) * 100 = {{resultNoAPercentage.toFixed(2)}}%"></a></td>
                     </tr>
                     <tr>
                         <td>{{compareNumberB}} is what % of {{compareNumberA}} of</td>
-                        <td>{{resultNoBPercentage}}%</td>
+                        <td class="hidden-xs">{{resultNoBPercentage}}%</td>
                         <td>{{resultNoBPercentage.toFixed(2)}}%</td>
                         <td class="hidden-xs"><a href="#" class="popover-link glyphicon glyphicon-question-sign" rel="popover" data-placement="left" data-trigger="hover" data-trigger="hover" data-content="(numberB / numberA) * 100" data-original-title="({{compareNumberB}} / {{compareNumberA}}) * 100 = {{resultNoBPercentage.toFixed(2)}}%"></a></td>
                     </tr>
                     <tr>
                         <td>{{compareNumberA}} to {{compareNumberB}} is an increase of</td>
-                        <td>{{resultCompareIncrease}}%</td>
+                        <td class="hidden-xs">{{resultCompareIncrease}}%</td>
                         <td>{{resultCompareIncrease.toFixed(2)}}%</td>
                         <td class="hidden-xs"><a href="#" class="popover-link glyphicon glyphicon-question-sign" rel="popover" data-placement="left" data-trigger="hover" data-content="((numberB / numberA) * 100) - 100" data-original-title="(({{compareNumberB}} / {{compareNumberA}}) * 100) - 100 = {{resultCompareIncrease.toFixed(2)}}%"></a></td>
                     </tr>
                     <tr>
                         <td>{{compareNumberB}} to {{compareNumberA}} is an decrease of</td>
-                        <td>{{resultCompareDecrease }}%</td>
+                        <td class="hidden-xs">{{resultCompareDecrease }}%</td>
                         <td>{{resultCompareDecrease.toFixed(2)}}%</td>
                         <td class="hidden-xs"><a href="#" class="popover-link glyphicon glyphicon-question-sign" rel="popover" data-placement="left" data-trigger="hover" data-content="100 - ((numberA / numberB) * 100)" data-original-title="100 - (({{compareNumberA}} / {{compareNumberB}}) * 100)= {{resultCompareDecrease.toFixed(2)}}%"></a></td>
                     </tr>
