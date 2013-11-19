@@ -157,6 +157,10 @@ nav a:hover {
    Author's custom styles: Patrick Ruhkopf
    ========================================================================== */
 
+.form-inline {
+    padding-left: 5px;
+}
+
 .form-inline label {
     float: left;
     text-align: right;
@@ -164,24 +168,19 @@ nav a:hover {
     padding-top: 5px;
 }
 
-.form-inline .form-control {
-    display: inline;
-    float: left;
-}
-
 .form-inline .form-group {
-    display: block;
+    display: inline;
 }
 
 .form-inline .col-sm-6 {
-    padding-bottom: 25px;
+    padding-bottom: 10px;
 }
 
 .popover-link:hover, .popover-link:active, .popover-link:focus {
     text-decoration: none;
 }
 .tab-pane {
-    padding:15px 10px;
+    padding:15px 3px;
 }
 
 .table {
