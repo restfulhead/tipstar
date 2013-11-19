@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html ng-app="percenterApp">
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Percenter - A percentage calculator</title>
+        <meta name="description" content="A percentage calculator">
+        <meta name="viewport" content="width=device-width">
+
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <style>
+            body {
+                padding-top: 50px;
+                padding-bottom: 20px;
+            }
+        </style>
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="css/main.css">
+
+        <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+        <script src="js/vendor/angular.min.js"></script>
+
+        <script src="js/controllers.js"></script>
+
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Percenter</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+          </ul>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </div>
+
+    <div class="container" ng-controller="PercenterCtrl">
+        <h2>Percentage calculator</h2>
+
+        <ul class="nav nav-pills">
+            <li class="active"><a href="#applyPercentage" data-toggle="tab">Apply percentage</a></li>
+            <li><a href="#compareValues" data-toggle="tab">Compare values</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane fade in active" id="applyPercentage">
+
+                <form class="form-inline">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="inputPercentage">Apply</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="inputPercentage" placeholder="0.00" ng-model="percentage" />
+                                    <span class="input-group-addon">%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="form-group">
+                                <label for="inputAmount">to</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="inputAmount" placeholder="0.00" ng-model="amount" />
+                            <span class="input-group-btn">
+                                 <button class="btn btn-default" type="button">Calculate!</button>
+                            </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <table class="table table-condensed">
+                    <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>Total</th>
+                        <th>Rounded</th>
+                        <th class="hidden-xs"><span class="glyphicon glyphicon-question-sign"></span></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>{{percentage}}% of {{amount}} is</td>
+                        <td>{{resultPercentage}}</td>
+                        <td>{{resultPercentage.toFixed(2)}}</td>
+                        <td class="hidden-xs"><a href="#" class="popover-link glyphicon glyphicon-question-sign" rel="popover" data-placement="left" data-trigger="hover" data-content="(percentage / 100) * amount" data-original-title="{{percentage}}% of {{amount}} = {{resultPercentage.toFixed(2)}}"></a></td>
+                    </tr>
+                    <tr>
+                        <td>{{amount}} is {{percentage}}% of</td>
+                        <td>{{resultAmount}}</td>
+                        <td>{{resultAmount.toFixed(2)}}</td>
+                        <td class="hidden-xs"><a href="#" class="popover-link glyphicon glyphicon-question-sign" rel="popover" data-placement="left" data-trigger="hover" data-trigger="hover" data-content="amount / (percentage/100)" data-original-title="{{amount}} is {{percentage}}% of {{resultAmount.toFixed(2)}}"></a></td>
+                    </tr>
+                    <tr>
+                        <td>{{amount}} plus {{percentage}}% is (i.e gross value)</td>
+                        <td>{{resultAdd}}</td>
+                        <td>{{resultAdd.toFixed(2)}}</td>
+                        <td class="hidden-xs"><a href="#" class="popover-link glyphicon glyphicon-question-sign" rel="popover" data-placement="left" data-trigger="hover" data-content="amount + ((percentage / 100) * amount)" data-original-title="{{amount}} + {{percentage}}% = {{resultAdd.toFixed(2)}}"></a></td>
+                    </tr>
+                    <tr>
+                        <td>if {{amount}} is after {{percentage}}% increase, then it was (i.e net value)</td>
+                        <td>{{resultIncreased }}</td>
+                        <td>{{resultIncreased.toFixed(2)}}</td>
+                        <td class="hidden-xs"><a href="#" class="popover-link glyphicon glyphicon-question-sign" rel="popover" data-placement="left" data-trigger="hover" data-content="amount / ((100+percentage)/100)" data-original-title="{{amount}} / {{increasedPercentage}}% = {{resultIncreased.toFixed(2)}}"></a></td>
+                    </tr>
+                    <tr>
+                        <td>{{amount}} less {{percentage}}% is</td>
+                        <td>{{resultSubtract }}</td>
+                        <td>{{resultSubtract.toFixed(2)}}</td>
+                        <td class="hidden-xs"><a href="#" class="popover-link glyphicon glyphicon-question-sign" rel="popover" data-placement="left" data-trigger="hover" data-content="amount - ((percentage / 100) * amount)" data-original-title="{{amount}} - {{percentage}}% = {{resultSubtract.toFixed(2)}}"</a></td>
+                    </tr>
+                    <tr>
+                        <td>if {{amount}} is after {{percentage}}% reduction, then it was</td>
+                        <td>{{resultReduced}}</td>
+                        <td>{{resultReduced.toFixed(2)}}</td>
+                        <td class="hidden-xs"><a href="#" class="popover-link glyphicon glyphicon-question-sign" rel="popover" data-placement="left" data-trigger="hover" data-content="amount / ((100-percentage)/100)" data-original-title="{{amount}} / {{reducedPercentage}}% = {{resultReduced.toFixed(2)}}"></a></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="tab-pane fade" id="compareValues">
+
+                <form class="form-inline">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="inputNoA">Compare</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="inputNoA" placeholder="0.00" ng-model="compareNumberA" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="inputNoB">to</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="inputNoB" placeholder="0.00" ng-model="compareNumberB" />
+                            <span class="input-group-btn">
+                                 <button class="btn btn-default" type="button">Calculate!</button>
+                            </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <table class="table table-condensed">
+                    <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>Total</th>
+                        <th>Rounded</th>
+                        <th class="hidden-xs"><span class="glyphicon glyphicon-question-sign"></span></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>{{compareNumberA}} is what % of {{compareNumberB}} is</td>
+                        <td>{{resultNoAPercentage}}%</td>
+                        <td>{{resultNoAPercentage.toFixed(2)}}%</td>
+                        <td class="hidden-xs"><a href="#" class="popover-link glyphicon glyphicon-question-sign" rel="popover" data-placement="left" data-trigger="hover" data-content="(numberA / numberB) * 100" data-original-title="({{compareNumberA}} / {{compareNumberB}}) * 100 = {{resultNoAPercentage.toFixed(2)}}%"></a></td>
+                    </tr>
+                    <tr>
+                        <td>{{compareNumberB}} is what % of {{compareNumberA}} of</td>
+                        <td>{{resultNoBPercentage}}%</td>
+                        <td>{{resultNoBPercentage.toFixed(2)}}%</td>
+                        <td class="hidden-xs"><a href="#" class="popover-link glyphicon glyphicon-question-sign" rel="popover" data-placement="left" data-trigger="hover" data-trigger="hover" data-content="(numberB / numberA) * 100" data-original-title="({{compareNumberB}} / {{compareNumberA}}) * 100 = {{resultNoBPercentage.toFixed(2)}}%"></a></td>
+                    </tr>
+                    <tr>
+                        <td>{{compareNumberA}} to {{compareNumberB}} is an increase of</td>
+                        <td>{{resultCompareIncrease}}%</td>
+                        <td>{{resultCompareIncrease.toFixed(2)}}%</td>
+                        <td class="hidden-xs"><a href="#" class="popover-link glyphicon glyphicon-question-sign" rel="popover" data-placement="left" data-trigger="hover" data-content="((numberB / numberA) * 100) - 100" data-original-title="(({{compareNumberB}} / {{compareNumberA}}) * 100) - 100 = {{resultCompareIncrease.toFixed(2)}}%"></a></td>
+                    </tr>
+                    <tr>
+                        <td>{{compareNumberB}} to {{compareNumberA}} is an decrease of</td>
+                        <td>{{resultCompareDecrease }}%</td>
+                        <td>{{resultCompareDecrease.toFixed(2)}}%</td>
+                        <td class="hidden-xs"><a href="#" class="popover-link glyphicon glyphicon-question-sign" rel="popover" data-placement="left" data-trigger="hover" data-content="100 - ((numberA / numberB) * 100)" data-original-title="100 - (({{compareNumberA}} / {{compareNumberB}}) * 100)= {{resultCompareDecrease.toFixed(2)}}%"></a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+
+        <hr>
+
+      <footer>
+          <div class="container">
+                <p>&copy; Patrick Ruhkopf 2013</p>
+          </div>
+      </footer>
+    </div> <!-- /container -->        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
+
+        <script src="js/vendor/bootstrap.min.js"></script>
+
+        <script src="js/main.js"></script>
+
+
+
+        <script>
+            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src='//www.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s)}(document,'script'));
+        </script>
+    </body>
+</html>

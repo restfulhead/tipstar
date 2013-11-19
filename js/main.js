@@ -1,0 +1,3 @@
+$(function ()
+{ $(".popover-link").popover();
+});
