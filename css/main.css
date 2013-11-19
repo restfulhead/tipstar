@@ -154,7 +154,7 @@ nav a:hover {
 }
 
 /* ==========================================================================
-   Author's custom styles
+   Author's custom styles: Patrick Ruhkopf
    ========================================================================== */
 
 .form-inline label {
@@ -176,7 +176,11 @@ nav a:hover {
     margin-top:10px;
 }
 
-
+@media (max-width: 600px) {
+    h2 {
+        font-size: 26px;
+    }
+}
 
 
 

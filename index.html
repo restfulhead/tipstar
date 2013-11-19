@@ -44,7 +44,6 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
           </ul>
         </div><!--/.navbar-collapse -->
       </div>
@@ -55,7 +54,7 @@
 
         <ul class="nav nav-pills">
             <li class="active"><a href="#applyPercentage" data-toggle="tab">Apply percentage</a></li>
-            <li><a href="#compareValues" data-toggle="tab">Compare values</a></li>
+            <li><a href="#compareValues" data-toggle="tab">Compare</a></li>
         </ul>
 
         <div class="tab-content">
@@ -63,24 +62,16 @@
 
                 <form class="form-inline">
                     <div class="row">
-                        <div class="col-sm-4">
+                        <div class="col-sm-6">
                             <div class="form-group">
-                                <label for="inputPercentage">Apply</label>
-                                <div class="input-group">
-                                    <input type="number" class="form-control" id="inputPercentage" placeholder="0.00" ng-model="percentage" />
-                                    <span class="input-group-addon">%</span>
-                                </div>
+                                <label style="width: 50px;text-align: right;padding-right: 5px;" for="inputPercentage">Apply</label>
+                                <input style="width: 85%" type="number" class="form-control" id="inputPercentage" placeholder="0.00" ng-model="percentage" />
                             </div>
                         </div>
-                        <div class="col-sm-8">
+                        <div class="col-sm-6">
                             <div class="form-group">
-                                <label for="inputAmount">to</label>
-                                <div class="input-group">
-                                    <input type="number" class="form-control" id="inputAmount" placeholder="0.00" ng-model="amount" />
-                            <span class="input-group-btn">
-                                 <button class="btn btn-default" type="button">Calculate!</button>
-                            </span>
-                                </div>
+                                <label style="width: 50px;text-align: right;padding-right: 5px;" for="inputAmount">to</label>
+                                <input style="width: 85%" type="number" class="form-control" id="inputAmount" placeholder="0.00" ng-model="amount" />
                             </div>
                         </div>
                     </div>
@@ -90,6 +81,7 @@
                     <thead>
                     <tr>
                         <th>Description</th>
+                        <th class="hidden-xs">&nbsp;</th>
                         <th class="hidden-xs">Total</th>
                         <th>Rounded</th>
                         <th class="hidden-xs"><span class="glyphicon glyphicon-question-sign"></span></th>
@@ -98,36 +90,42 @@
                     <tbody>
                     <tr>
                         <td>{{percentage}}% of {{amount}} is</td>
+                        <td class="hidden-xs">&nbsp;</td>
                         <td class="hidden-xs">{{resultPercentage}}</td>
                         <td>{{resultPercentage.toFixed(2)}}</td>
                         <td class="hidden-xs"><a href="#" class="popover-link glyphicon glyphicon-question-sign" rel="popover" data-placement="left" data-trigger="hover" data-content="(percentage / 100) * amount" data-original-title="{{percentage}}% of {{amount}} = {{resultPercentage.toFixed(2)}}"></a></td>
                     </tr>
                     <tr>
                         <td>{{amount}} is {{percentage}}% of</td>
+                        <td class="hidden-xs">&nbsp;</td>
                         <td class="hidden-xs">{{resultAmount}}</td>
                         <td>{{resultAmount.toFixed(2)}}</td>
                         <td class="hidden-xs"><a href="#" class="popover-link glyphicon glyphicon-question-sign" rel="popover" data-placement="left" data-trigger="hover" data-trigger="hover" data-content="amount / (percentage/100)" data-original-title="{{amount}} is {{percentage}}% of {{resultAmount.toFixed(2)}}"></a></td>
                     </tr>
                     <tr>
-                        <td>{{amount}} plus {{percentage}}% is (i.e gross value)</td>
+                        <td>{{amount}} plus {{percentage}}% is</td>
+                        <td class="hidden-xs">(i.e gross value)</td>
                         <td class="hidden-xs">{{resultAdd}}</td>
                         <td>{{resultAdd.toFixed(2)}}</td>
                         <td class="hidden-xs"><a href="#" class="popover-link glyphicon glyphicon-question-sign" rel="popover" data-placement="left" data-trigger="hover" data-content="amount + ((percentage / 100) * amount)" data-original-title="{{amount}} + {{percentage}}% = {{resultAdd.toFixed(2)}}"></a></td>
                     </tr>
                     <tr>
-                        <td>if {{amount}} is after {{percentage}}% increase, then it was (i.e net value)</td>
+                        <td>if {{amount}} is after {{percentage}}% increase, then it was</td>
+                        <td class="hidden-xs">(i.e net value)</td>
                         <td class="hidden-xs">{{resultIncreased }}</td>
                         <td>{{resultIncreased.toFixed(2)}}</td>
                         <td class="hidden-xs"><a href="#" class="popover-link glyphicon glyphicon-question-sign" rel="popover" data-placement="left" data-trigger="hover" data-content="amount / ((100+percentage)/100)" data-original-title="{{amount}} / {{increasedPercentage}}% = {{resultIncreased.toFixed(2)}}"></a></td>
                     </tr>
                     <tr>
                         <td>{{amount}} less {{percentage}}% is</td>
+                        <td class="hidden-xs">&nbsp;</td>
                         <td class="hidden-xs">{{resultSubtract }}</td>
                         <td>{{resultSubtract.toFixed(2)}}</td>
                         <td class="hidden-xs"><a href="#" class="popover-link glyphicon glyphicon-question-sign" rel="popover" data-placement="left" data-trigger="hover" data-content="amount - ((percentage / 100) * amount)" data-original-title="{{amount}} - {{percentage}}% = {{resultSubtract.toFixed(2)}}"</a></td>
                     </tr>
                     <tr>
                         <td>if {{amount}} is after {{percentage}}% reduction, then it was</td>
+                        <td class="hidden-xs">&nbsp;</td>
                         <td class="hidden-xs">{{resultReduced}}</td>
                         <td>{{resultReduced.toFixed(2)}}</td>
                         <td class="hidden-xs"><a href="#" class="popover-link glyphicon glyphicon-question-sign" rel="popover" data-placement="left" data-trigger="hover" data-content="amount / ((100-percentage)/100)" data-original-title="{{amount}} / {{reducedPercentage}}% = {{resultReduced.toFixed(2)}}"></a></td>
@@ -142,21 +140,14 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label for="inputNoA">Compare</label>
-                                <div class="input-group">
-                                    <input type="number" class="form-control" id="inputNoA" placeholder="0.00" ng-model="compareNumberA" />
-                                </div>
+                                <label style="width: 75px;text-align: right;padding-right: 5px;" for="inputNoA">Compare</label>
+                                <input style="width: 75%" type="number" class="form-control" id="inputNoA" placeholder="0.00" ng-model="compareNumberA" />
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label for="inputNoB">to</label>
-                                <div class="input-group">
-                                    <input type="number" class="form-control" id="inputNoB" placeholder="0.00" ng-model="compareNumberB" />
-                            <span class="input-group-btn">
-                                 <button class="btn btn-default" type="button">Calculate!</button>
-                            </span>
-                                </div>
+                                <label style="width: 75px;text-align: right;padding-right: 5px;" for="inputNoB">to</label>
+                                <input style="width: 75%" type="number" class="form-control" id="inputNoB" placeholder="0.00" ng-model="compareNumberB" />
                             </div>
                         </div>
                     </div>
@@ -208,7 +199,7 @@
 
       <footer>
           <div class="container">
-                <p>&copy; Patrick Ruhkopf 2013</p>
+                <p>&copy; <a href="http://ruhkopf.name/">Patrick Ruhkopf</a> 2013</p>
           </div>
       </footer>
     </div> <!-- /container -->        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
