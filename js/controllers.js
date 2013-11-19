@@ -2,12 +2,6 @@ var percenterApp = angular.module('percenterApp', []);
 
 percenterApp.controller('PercenterCtrl', function ($scope)
 {
-    $scope.percentage = 0;
-    $scope.amount = 0;
-    $scope.compareNumberA = 0;
-    $scope.compareNumberB = 0;
-
-
     $scope.$watch('percentage', function (newValue, oldValue) {
         recalculateApply();
     }, true);
