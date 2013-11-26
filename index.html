@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="percenterApp">
+<html ng-app="percenterApp" id="ng-app">
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
@@ -206,6 +206,17 @@
 
         </div>
 
+     </div>
+
+     <div class="container" ng-controller="HomeScreenCtrl">
+
+        <h3>Bookmark Percenter</h3>
+        <img src="apple-touch-icon-57x57-precomposed.png" style="float: left; margin-right: 10px; width: 50px" alt="Percenter app icon"/>
+        <p>Adding this app to your iPhone or iPad home screen is easy. In Safari just click on the little export icon with the arrow in the toolbar at the bottom. <a href="#" ng-click="showDetails = !showDetails">Click here for more details.</a> </p>
+
+         <div class="slide-animate-container">
+            <div class="slide-animate" ng-if="details" ng-include="details"></div>
+        </div>
     </div>
 
         <hr>

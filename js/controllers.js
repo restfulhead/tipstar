@@ -45,5 +45,18 @@ percenterApp.controller('PercenterCtrl', function ($scope)
         $scope.resultCompareIncrease = ((numberB / numberA) * 100) - 100;
         $scope.resultCompareDecrease = 100 - ((numberA / numberB) * 100);
     }
+});
+
+percenterApp.controller('HomeScreenCtrl', function ($scope)
+{
+    $scope.$watch('showDetails', function (newValue, oldValue)
+    {
+        if (newValue) {
+            $scope.details = "partials/how-to-add-percenter-to-home-screen.html";
+        }
+        else {
+            $scope.details = null;
+        }
+    }, true);
 
 });

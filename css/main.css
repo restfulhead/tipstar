@@ -198,7 +198,19 @@ nav a:hover {
     }
 }
 
-
+div.figure {
+    margin: 0.5em;
+    padding: 0.5em;
+}
+div.figure p {
+    text-align: left;
+    font-style: italic;
+    font-size: smaller;
+}
+img.screenshot {
+    width: 100%;
+    border: thin black solid;
+}
 
 
 
