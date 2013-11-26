@@ -196,6 +196,12 @@ nav a:hover {
     h2 {
         font-size: 26px;
     }
+    h3 {
+        font-size: 22px;
+    }
+    h4 {
+        font-size: 18px;
+    }
 }
 
 div.figure {
@@ -212,7 +218,74 @@ img.screenshot {
     border: thin black solid;
 }
 
+.highlight {
+    background-color: #4F4F4F;
+    border-radius: 16px;
+    padding: 10px;
+    margin-top: 5px;
 
+    color: #B1B1B1;
+    text-shadow: 0 2px 0 rgba(0, 0, 0, 0.25);
+}
+
+.highlight label
+{
+    color: #FFFFFF;
+}
+
+.highlight .table thead > tr > th {
+    border-bottom: 2px solid rgb(212, 212, 212);
+    color: #E0E0E0;
+}
+
+.highlight .table thead > tr > th, .table tbody > tr > th, .table tfoot > tr > th, .table thead > tr > td, .table tbody > tr > td, .table tfoot > tr > td {
+    border-top: 1px solid rgb(212, 212, 212);
+}
+
+.highlight .input-group-addon {
+    background-color: rgb(46, 46, 46);
+    border: 1px solid rgb(63, 63, 63);
+}
+
+.highlight .form-control {
+    color: #B1B1B1;
+    background-color: rgb(74, 74, 74);
+    border: 1px solid rgb(63, 63, 63);
+}
+
+.highlight .form-control:focus {
+    border-color: #28a98b;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6);
+}
+
+.highlight a {
+    color: #28a98b;
+}
+
+.highlight .popover {
+    background-color: rgb(46, 46, 46);
+    border-color: #28a98b;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6);
+}
+
+.highlight .arrow {
+    color: #28a98b;
+}
+
+.highlight .popover-title {
+    background: #2E2E2E; /* Old browsers */
+    color: #E0E0E0;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+    border-bottom: 1px solid rgb(235, 235, 235);
+
+    #background: -moz-linear-gradient(top,  #8e8e8e 0%, #4e4e4e 100%); /* FF3.6+ */
+    #background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#8e8e8e), color-stop(100%,#4e4e4e)); /* Chrome,Safari4+ */
+    #background: -webkit-linear-gradient(top,  #8e8e8e 0%,#4e4e4e 100%); /* Chrome10+,Safari5.1+ */
+    #background: -o-linear-gradient(top,  #8e8e8e 0%,#4e4e4e 100%); /* Opera 11.10+ */
+    #background: -ms-linear-gradient(top,  #8e8e8e 0%,#4e4e4e 100%); /* IE10+ */
+    #background: linear-gradient(to bottom,  #8e8e8e 0%,#4e4e4e 100%); /* W3C */
+    #filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8e8e8e', endColorstr='#4e4e4e',GradientType=0 ); /* IE6-9 */
+}
 
 /* ==========================================================================
    Media Queries
