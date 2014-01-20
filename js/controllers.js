@@ -28,8 +28,8 @@ percenterApp.controller('PercenterCtrl', function ($scope, $rootScope)
 
     function recalculateApply()
     {
-        var percentage = parseFloatX($scope.percentage.toString());
-        var amount = parseFloatX($scope.amount.toString());
+        var percentage = parseFloat($scope.percentage.toString());
+        var amount = parseFloat($scope.amount.toString());
 
         $scope.resultPercentage = (percentage / 100) * amount;
         $scope.resultAmount = amount / (percentage/100);
@@ -45,8 +45,8 @@ percenterApp.controller('PercenterCtrl', function ($scope, $rootScope)
 
     function recalculateCompare()
     {
-        var numberA = parseFloatX($scope.compareNumberA);
-        var numberB = parseFloatX($scope.compareNumberB);
+        var numberA = parseFloat($scope.compareNumberA);
+        var numberB = parseFloat($scope.compareNumberB);
 
         $scope.resultNoAPercentage = (numberA / numberB) * 100;
         $scope.resultNoBPercentage = (numberB / numberA) * 100;
@@ -54,42 +54,6 @@ percenterApp.controller('PercenterCtrl', function ($scope, $rootScope)
         $scope.resultCompareDecrease = 100 - ((numberA / numberB) * 100);
     }
 
-    function parseFloatX (arg)
-    {
-        if(!arg) {
-            return arg;
-        }
-
-
-        if (!arg || arg.length < 1)
-        {
-            return parseFloat(str);
-        }
-
-        var str = arg.toString();
-
-        var fixed = '';
-        var separator = false;
-        for(var i=str.length-1;i >= 0; i--)
-        {
-            var char = str.charAt(i);
-
-            if ((char == ',' || char == '.'))
-            {
-                if(!separator)
-                {
-                    fixed = '.' + fixed;
-                    separator = true;
-                }
-            }
-            else
-            {
-                fixed = char + fixed;
-            }
-        }
-
-        return parseFloat(fixed);
-    }
 });
 
 percenterApp.controller('HomeScreenCtrl', function ($scope, $rootScope)
@@ -164,6 +128,5 @@ percenterApp.controller('HomeScreenCtrl', function ($scope, $rootScope)
 
         $rootScope.$broadcast('applyPercentage', param);
         window.scrollTo(0,0);
-
     };
 });

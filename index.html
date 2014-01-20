@@ -75,8 +75,8 @@
                                     <label style="width: 50px" for="inputPercentage">Apply</label>
 
                                     <div class="input-group">
-                                        <input type="text" class="form-control" id="inputPercentage"
-                                               placeholder="0.00" ng-model="percentage"/>
+                                        <input type="number" class="form-control" id="inputPercentage"
+                                               placeholder="0.00" ng-model="percentage" autofocus="autofocus"/>
                                         <span class="input-group-addon">%</span>
                                     </div>
                                 </div>
@@ -85,7 +85,7 @@
                                         <label style="width: 50px" for="inputAmount">to</label>
 
                                         <div class="input-group">
-                                            <input type="text" class="form-control" id="inputAmount"
+                                            <input type="number" class="form-control" id="inputAmount"
                                                    placeholder="0.00" ng-model="amount"/>
                                             <span class="input-group-addon">=&nbsp;</span>
                                         </div>
@@ -184,14 +184,14 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label style="width: 75px" for="inputNoA">Compare</label>
-                                        <input style="width: 180px" type="text" class="form-control" id="inputNoA"
+                                        <input style="width: 180px" type="number" class="form-control" id="inputNoA"
                                                placeholder="0.00" ng-model="compareNumberA"/>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label style="width: 75px" for="inputNoB">to</label>
-                                        <input style="width: 180px" type="text" class="form-control" id="inputNoB"
+                                        <input style="width: 180px" type="number" class="form-control" id="inputNoB"
                                                placeholder="0.00" ng-model="compareNumberB"/>
                                     </div>
                                 </div>
