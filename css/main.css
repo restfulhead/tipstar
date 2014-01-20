@@ -123,6 +123,18 @@ nav a:hover {
     text-decoration: underline;
 }
 
+.navbar-inverse .navbar-toggle {
+    border-color:#FFFFFF;
+}
+
+.navbar-inverse .navbar-toggle .icon-bar {
+    background-color: #FFFFFF;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #FFFFFF;
+}
+
 /* ==============
     MOBILE: Main
    ============== */
@@ -248,7 +260,8 @@ img.screenshot {
 }
 
 .highlight .form-control {
-    color: #B1B1B1;
+    #color: #B1B1B1;
+    color: #FFFFFF;
     background-color: rgb(74, 74, 74);
     border: 1px solid rgb(63, 63, 63);
 }
