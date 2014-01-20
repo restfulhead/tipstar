@@ -59,6 +59,7 @@
               <ul class="nav navbar-nav">
                 <li class="active"><a href="#applyPercentage" data-toggle="tab">Apply percentage</a></li>
                 <li><a href="#compareValues" data-toggle="tab">Compare</a></li>
+                <li><a href="#legal" data-toggle="tab">Legal Notices</a></li>
               </ul>
             </div><!--/.navbar-collapse -->
           </div>
@@ -67,14 +68,14 @@
         <div class="container" ng-controller="PercenterCtrl">
             <div class="tab-content">
                 <div class="tab-pane fade in active" id="applyPercentage">
-                    <div class="highlight">
+                    <div class="actionBox">
                         <form class="form-inline">
                             <div class="row">
                                 <div class="col-sm-6">
                                     <label style="width: 50px" for="inputPercentage">Apply</label>
 
                                     <div class="input-group">
-                                        <input type="number" class="form-control" id="inputPercentage"
+                                        <input type="text" class="form-control" id="inputPercentage"
                                                placeholder="0.00" ng-model="percentage"/>
                                         <span class="input-group-addon">%</span>
                                     </div>
@@ -84,7 +85,7 @@
                                         <label style="width: 50px" for="inputAmount">to</label>
 
                                         <div class="input-group">
-                                            <input type="number" class="form-control" id="inputAmount"
+                                            <input type="text" class="form-control" id="inputAmount"
                                                    placeholder="0.00" ng-model="amount"/>
                                             <span class="input-group-addon">=&nbsp;</span>
                                         </div>
@@ -127,7 +128,7 @@
                                                      data-original-title="{{amount}} is {{percentage}}% of {{resultAmount.toFixed(2)}}"></a>
                             </td>
                         </tr>
-                        <tr>
+                        <tr id="resultAddColumn">
                             <td>{{amount}} plus {{percentage}}% is</td>
                             <td class="hidden-xs">(i.e gross value)</td>
                             <td class="hidden-xs">{{resultAdd}}</td>
@@ -138,7 +139,7 @@
                                                      data-original-title="{{amount}} + {{percentage}}% = {{resultAdd.toFixed(2)}}"></a>
                             </td>
                         </tr>
-                        <tr>
+                        <tr id="resultIncreasedColumn">
                             <td>if {{amount}} is after {{percentage}}% increase, then it was</td>
                             <td class="hidden-xs">(i.e net value)</td>
                             <td class="hidden-xs">{{resultIncreased }}</td>
@@ -149,7 +150,7 @@
                                                      data-original-title="{{amount}} / {{increasedPercentage}}% = {{resultIncreased.toFixed(2)}}"></a>
                             </td>
                         </tr>
-                        <tr>
+                        <tr id="resultSubtractColumn">
                             <td>{{amount}} less {{percentage}}% is</td>
                             <td class="hidden-xs">&nbsp;</td>
                             <td class="hidden-xs">{{resultSubtract }}</td>
@@ -173,26 +174,24 @@
                         </tr>
                         </tbody>
                     </table>
-
-                    <p>Hallo</p>
-
                 </div>
+
                 <div class="tab-pane fade" id="compareValues">
 
-                    <div class="highlight">
+                    <div class="actionBox">
                         <form class="form-inline">
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label style="width: 75px" for="inputNoA">Compare</label>
-                                        <input style="width: 180px" type="number" class="form-control" id="inputNoA"
+                                        <input style="width: 180px" type="text" class="form-control" id="inputNoA"
                                                placeholder="0.00" ng-model="compareNumberA"/>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label style="width: 75px" for="inputNoB">to</label>
-                                        <input style="width: 180px" type="number" class="form-control" id="inputNoB"
+                                        <input style="width: 180px" type="text" class="form-control" id="inputNoB"
                                                placeholder="0.00" ng-model="compareNumberB"/>
                                     </div>
                                 </div>
@@ -254,24 +253,49 @@
                     </table>
                 </div>
 
-            </div>
+                <div class="tab-pane fade" id="legal">
+                    <h2>Legal Notices</h2>
+                    <h3>Terms of Use</h3>
+                    <h4>ruhkopf.name (including percenter.ruhkopf.name) &copy; <a href="http://ruhkopf.name/">Patrick Ruhkopf</a> 2013-2014</h4>
+                    <ol>
+                        <li>The following terms of use apply to all visitors to or users of the ruhkopf.name including all subdomains such as percenter.ruhkopf.name ("*.ruhkopf.name") Website (the "Site"). By accessing the Site, you acknowledge acceptance of these terms of use. In the case of any violation of these terms of use, the author reserves the right to seek all remedies available at law and in equity for such violations. The author may amend the terms of use from time to time in its discretion. You shall be bound by any such amendments and should therefore periodically visit this web page to review the then current terms of use to which you are bound.</li>
+                        <li>The site contents are copyrighted by Patrick Ruhkopf. All rights are reserved.</li>
+                        <li>Except as specified in these terms of use, nothing contained in the Site shall be construed as conferring any license or right under any patent, trademark or copyright of Patrick Ruhkopf or any third party. Any product, process, service, invention or technology published on this Site may be the subject of intellectual property rights preserved by Patrick Ruhkopf, its subsidiaries or licensors and are not licensed hereunder. No permission is granted to use Patrick Ruhkopf's name, logo, trademarks, trade names or trade dress for any reason.</li>
+                        <li>All information provided on this Site is intended for informational purposes only and is subject to change or withdrawal by Patrick Ruhkopf at any time without notice. Patrick Ruhkopf assumes no responsibility for the accuracy or completeness of the information on this Site. THE INFORMATION ON THIS SITE IS PROVIDED "AS IS," WITHOUT WARRANTY OF ANY KIND, INCLUDING, WITHOUT LIMITATION, ANY IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT. PATRICK RUHKOPF FURTHER DISCLAIMS ANY LIABILITY IN CONNECTION WITH THE SITE OR THE INFORMATION PROVIDED ON THE SITE. Some jurisdictions do not allow the exclusion of implied warranties, so the above exclusion may not apply to you. IN NO EVENT WILL PATRICK RUHKOPF, ITS DIRECTORS, OFFICERS, EMPLOYEES, REPRESENTATIVES OR AGENTS BE LIABLE TO ANY PARTY FOR ANY DIRECT, INDIRECT, SPECIAL OR OTHER CONSEQUENTIAL DAMAGES FOR ANY USE OF THE SITE, THE INFORMATION PRESENTED ON THE SITE, OR ANY OTHER HYPERLINKED WEBSITE, INCLUDING, WITHOUT LIMITATION, ANY LOST PROFITS, BUSINESS INTERRUPTION, LOSS OF DATA OR OTHERWISE, EVEN IF PATRICK RUHKOPF IS EXPRESSLY ADVISED OF POSSIBILITY OF SUCH DAMAGES. </li>
+                        <li> The Site may contain hyperlinks to other Sites controlled by parties other than Patrick Ruhkopf. Patrick Ruhkopf is not responsible for and does not endorse the contents or use of these Sites.
+                            The author reserves the right to withdraw access to this Site and revise the content, products, services and pricing described in this Site at any time without notifying you.</li>
+                    </ol>
+                </div>
         </div>
 
+        <div ng-controller="HomeScreenCtrl" id="home" >
+            <div class="container" ng-if="activeTabId == 'applyPercentage'">
+                <h3>Examples</h3>
+                <ul>
+                    <li><a href="#" ng-click="showExample(1)">What is $30 plus 18% tip?</a></li>
+                    <li><a href="#" ng-click="showExample(2)">What is $50 plus 18% tip?</a></li>
+                    <li><a href="#" ng-click="showExample(3)">What is $70 plus 18% tip?</a></li>
+                    <li><a href="#" ng-click="showExample(4)">What is the total for $60 item that is 40% off?</a></li>
+                    <li><a href="#" ng-click="showExample(5)">What is the estimated total for a $399 item plus NYC tax (8.375%)?</a></li>
+                    <li><a href="#" ng-click="showExample(6)">What is the net value of $99 including VAT tax (20%)?</a></li>
+                </ul>
+            </div>
 
-        <div class="container" ng-controller="HomeScreenCtrl">
-            <h3>Mobile friendly</h3>
-            <img src="apple-touch-icon-57x57-precomposed.png" style="float: left; margin-right: 10px; width: 50px" alt="Percenter app icon"/>
-            <p>This application supports multiple display formats and offline use. Please bookmark me!<br/>
-               If you are using an iPhone or iPad, you can also easily add Percenter to your home screen. In Safari just click on the little export icon with the arrow in the toolbar at the bottom. <a href="#" ng-click="showDetails = !showDetails">Click here for more details.</a> </p>
+            <div class="container">
+                <h3>Mobile friendly</h3>
+                <img src="apple-touch-icon-57x57-precomposed.png" style="float: left; margin-right: 10px; width: 50px" alt="Percenter app icon"/>
+                <p>This application supports multiple display formats and offline use. Please bookmark me!<br/>
+                   If you are using an iPhone or iPad, you can also easily add Percenter to your home screen. In Safari just click on the little export icon with the arrow in the toolbar at the bottom. <a href="#" ng-click="showDetails = !showDetails">Click here for more details.</a> </p>
 
-            <div ng-if="details" ng-include="details"></div>
+                <div ng-if="details" ng-include="details"></div>
+            </div>
         </div>
 
         <hr>
 
       <footer>
           <div class="container">
-                <p>&copy; <a href="http://ruhkopf.name/">Patrick Ruhkopf</a> 2013</p>
+                <p>&copy; <a href="http://ruhkopf.name/">Patrick Ruhkopf</a> 2013-2014</p>
           </div>
       </footer>
 
