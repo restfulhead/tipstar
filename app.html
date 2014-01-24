@@ -113,7 +113,7 @@
                         <thead>
                         <tr>
                             <th>Description</th>
-                            <th class="hidden-xs">&nbsp;</th>
+                            <th class="hidden-xs hidden-sm">&nbsp;</th>
                             <th class="hidden-xs text-right">Total</th>
                             <th class="hidden-xs text-right">Rounded</th>
                             <th class="text-right">Split by {{dividedBy}}</th>
@@ -123,7 +123,7 @@
                         <tbody>
                         <tr id="resultPercentageColumn">
                             <td>{{percentage}}% of {{amount}}</td>
-                            <td class="hidden-xs">&nbsp;</td>
+                            <td class="hidden-xs hidden-sm">&nbsp;</td>
                             <td class="hidden-xs text-right">{{resultPercentage}}</td>
                             <td class="hidden-xs text-right">{{resultPercentage.toFixed(2)}}</td>
                             <td class="text-right">{{resultPercentageDiv.toFixed(2)}}</td>
@@ -135,7 +135,7 @@
                         </tr>
                         <tr>
                             <td class="text">{{amount}} is {{percentage}}% of</td>
-                            <td class="hidden-xs">&nbsp;</td>
+                            <td class="hidden-xs hidden-sm">&nbsp;</td>
                             <td class="hidden-xs text-right">{{resultAmount}}</td>
                             <td class="hidden-xs text-right">{{resultAmount.toFixed(2)}}</td>
                             <td class="text-right">{{resultAmountDiv.toFixed(2)}}</td>
@@ -147,7 +147,7 @@
                         </tr>
                         <tr id="resultAddColumn">
                             <td class="text">{{amount}} plus {{percentage}}% is</td>
-                            <td class="hidden-xs">(i.e gross value)</td>
+                            <td class="hidden-xs hidden-sm">(i.e gross value)</td>
                             <td class="hidden-xs text-right">{{resultAdd}}</td>
                             <td class="hidden-xs text-right">{{resultAdd.toFixed(2)}}</td>
                             <td class="text-right">{{resultAddDiv.toFixed(2)}}</td>
@@ -159,7 +159,7 @@
                         </tr>
                         <tr id="resultIncreasedColumn">
                             <td class="text">if {{amount}} is after {{percentage}}% increase, then it was</td>
-                            <td class="hidden-xs">(i.e net value)</td>
+                            <td class="hidden-xs hidden-sm">(i.e net value)</td>
                             <td class="hidden-xs text-right">{{resultIncreased }}</td>
                             <td class="hidden-xs text-right">{{resultIncreased.toFixed(2)}}</td>
                             <td class="text-right">{{resultIncreasedDiv.toFixed(2)}}</td>
@@ -171,7 +171,7 @@
                         </tr>
                         <tr id="resultSubtractColumn">
                             <td class="text">{{amount}} less {{percentage}}% is</td>
-                            <td class="hidden-xs">&nbsp;</td>
+                            <td class="hidden-xs hidden-sm">&nbsp;</td>
                             <td class="hidden-xs text-right">{{resultSubtract }}</td>
                             <td class="hidden-xs text-right">{{resultSubtract.toFixed(2)}}</td>
                             <td class="text-right">{{resultSubtractDiv.toFixed(2)}}</td>
@@ -183,7 +183,7 @@
                         </tr>
                         <tr>
                             <td>if {{amount}} is after {{percentage}}% reduction, then it was</td>
-                            <td class="hidden-xs">&nbsp;</td>
+                            <td class="hidden-xs hidden-sm">&nbsp;</td>
                             <td class="hidden-xs text-right">{{resultReduced}}</td>
                             <td class="hidden-xs text-right">{{resultReduced.toFixed(2)}}</td>
                             <td class="text-right">{{resultReducedDiv.toFixed(2)}}</td>
@@ -280,8 +280,8 @@
                 <h3>Examples</h3>
                 <ul>
                     <li><a href="#" ng-click="showExample(1)">How much is 18% tip of $30?</a></li>
-                    <li><a href="#" ng-click="showExample(2)">How much is 18% tip of $50 split by 2?</a></li>
-                    <li><a href="#" ng-click="showExample(3)">How much is 18% tip of $70 split by 4?</a></li>
+                    <li><a href="#" ng-click="showExample(2)">And 18% tip of $50 split by 2?</a></li>
+                    <li><a href="#" ng-click="showExample(3)">Tell me 18% of $70 split by 4?</a></li>
                     <li><a href="#" ng-click="showExample(4)">What did I save when I got 40% off of $60?</a></li>
                     <li><a href="#" ng-click="showExample(5)">What is the estimated total for a $399 item plus NYC tax (8.375%)?</a></li>
                     <li><a href="#" ng-click="showExample(6)">What is the net value of $99 that includes VAT tax (20%)?</a></li>
