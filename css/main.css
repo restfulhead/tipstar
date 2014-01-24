@@ -206,6 +206,10 @@ nav a:hover {
     margin-bottom:0px;
 }
 
+.table th {
+    white-space:nowrap;
+}
+
 .nav-pills > li > a {
     padding: 5px 10px;
 }

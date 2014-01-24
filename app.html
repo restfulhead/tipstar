@@ -74,7 +74,7 @@
                             <div class="row">
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                    <label style="width: 55px" for="inputPercentage">Apply</label>
+                                    <label style="width: 65px" for="inputPercentage">Apply</label>
 
                                     <div class="input-group">
                                         <input type="number" class="form-control" id="inputPercentage"
@@ -85,7 +85,7 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                        <label style="width: 55px" for="inputAmount">to</label>
+                                        <label style="width: 65px" for="inputAmount">to</label>
 
                                         <div class="input-group">
                                             <input type="number" class="form-control" id="inputAmount"
@@ -96,7 +96,7 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                        <label style="width: 55px" for="inputDividedBy">div. by</label>
+                                        <label style="width: 65px" for="inputDividedBy">split by</label>
 
                                         <div class="input-group">
                                             <input type="number" class="form-control" id="inputDividedBy"
@@ -114,17 +114,19 @@
                         <tr>
                             <th>Description</th>
                             <th class="hidden-xs">&nbsp;</th>
-                            <th class="hidden-xs">Total</th>
-                            <th>Rounded</th>
+                            <th class="hidden-xs text-right">Total</th>
+                            <th class="hidden-xs text-right">Rounded</th>
+                            <th class="text-right">Split by {{dividedBy}}</th>
                             <th class="hidden-xs"><span class="glyphicon glyphicon-question-sign"></span></th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr id="resultPercentageColumn">
-                            <td>{{percentage}}% of {{amount}} is</td>
+                            <td>{{percentage}}% of {{amount}}</td>
                             <td class="hidden-xs">&nbsp;</td>
-                            <td class="hidden-xs">{{resultPercentage}}</td>
-                            <td>{{resultPercentage.toFixed(2)}}</td>
+                            <td class="hidden-xs text-right">{{resultPercentage}}</td>
+                            <td class="hidden-xs text-right">{{resultPercentage.toFixed(2)}}</td>
+                            <td class="text-right">{{resultPercentageDiv.toFixed(2)}}</td>
                             <td class="hidden-xs"><a href="#" class="popover-link glyphicon glyphicon-question-sign"
                                                      rel="popover" data-placement="left" data-trigger="click"
                                                      data-content="(percentage / 100) * amount"
@@ -132,10 +134,11 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>{{amount}} is {{percentage}}% of</td>
+                            <td class="text">{{amount}} is {{percentage}}% of</td>
                             <td class="hidden-xs">&nbsp;</td>
-                            <td class="hidden-xs">{{resultAmount}}</td>
-                            <td>{{resultAmount.toFixed(2)}}</td>
+                            <td class="hidden-xs text-right">{{resultAmount}}</td>
+                            <td class="hidden-xs text-right">{{resultAmount.toFixed(2)}}</td>
+                            <td class="text-right">{{resultAmountDiv.toFixed(2)}}</td>
                             <td class="hidden-xs"><a href="#" class="popover-link glyphicon glyphicon-question-sign"
                                                      rel="popover" data-placement="left" data-trigger="hover"
                                                      data-trigger="hover" data-content="amount / (percentage/100)"
@@ -143,10 +146,11 @@
                             </td>
                         </tr>
                         <tr id="resultAddColumn">
-                            <td>{{amount}} plus {{percentage}}% is</td>
+                            <td class="text">{{amount}} plus {{percentage}}% is</td>
                             <td class="hidden-xs">(i.e gross value)</td>
-                            <td class="hidden-xs">{{resultAdd}}</td>
-                            <td>{{resultAdd.toFixed(2)}}</td>
+                            <td class="hidden-xs text-right">{{resultAdd}}</td>
+                            <td class="hidden-xs text-right">{{resultAdd.toFixed(2)}}</td>
+                            <td class="text-right">{{resultAddDiv.toFixed(2)}}</td>
                             <td class="hidden-xs"><a href="#" class="popover-link glyphicon glyphicon-question-sign"
                                                      rel="popover" data-placement="left" data-trigger="hover"
                                                      data-content="amount + ((percentage / 100) * amount)"
@@ -154,10 +158,11 @@
                             </td>
                         </tr>
                         <tr id="resultIncreasedColumn">
-                            <td>if {{amount}} is after {{percentage}}% increase, then it was</td>
+                            <td class="text">if {{amount}} is after {{percentage}}% increase, then it was</td>
                             <td class="hidden-xs">(i.e net value)</td>
-                            <td class="hidden-xs">{{resultIncreased }}</td>
-                            <td>{{resultIncreased.toFixed(2)}}</td>
+                            <td class="hidden-xs text-right">{{resultIncreased }}</td>
+                            <td class="hidden-xs text-right">{{resultIncreased.toFixed(2)}}</td>
+                            <td class="text-right">{{resultIncreasedDiv.toFixed(2)}}</td>
                             <td class="hidden-xs"><a href="#" class="popover-link glyphicon glyphicon-question-sign"
                                                      rel="popover" data-placement="left" data-trigger="hover"
                                                      data-content="amount / ((100+percentage)/100)"
@@ -165,10 +170,11 @@
                             </td>
                         </tr>
                         <tr id="resultSubtractColumn">
-                            <td>{{amount}} less {{percentage}}% is</td>
+                            <td class="text">{{amount}} less {{percentage}}% is</td>
                             <td class="hidden-xs">&nbsp;</td>
-                            <td class="hidden-xs">{{resultSubtract }}</td>
-                            <td>{{resultSubtract.toFixed(2)}}</td>
+                            <td class="hidden-xs text-right">{{resultSubtract }}</td>
+                            <td class="hidden-xs text-right">{{resultSubtract.toFixed(2)}}</td>
+                            <td class="text-right">{{resultSubtractDiv.toFixed(2)}}</td>
                             <td class="hidden-xs"><a href="#" class="popover-link glyphicon glyphicon-question-sign"
                                                      rel="popover" data-placement="left" data-trigger="hover"
                                                      data-content="amount - ((percentage / 100) * amount)"
@@ -178,8 +184,9 @@
                         <tr>
                             <td>if {{amount}} is after {{percentage}}% reduction, then it was</td>
                             <td class="hidden-xs">&nbsp;</td>
-                            <td class="hidden-xs">{{resultReduced}}</td>
-                            <td>{{resultReduced.toFixed(2)}}</td>
+                            <td class="hidden-xs text-right">{{resultReduced}}</td>
+                            <td class="hidden-xs text-right">{{resultReduced.toFixed(2)}}</td>
+                            <td class="text-right">{{resultReducedDiv.toFixed(2)}}</td>
                             <td class="hidden-xs"><a href="#" class="popover-link glyphicon glyphicon-question-sign"
                                                      rel="popover" data-placement="left" data-trigger="hover"
                                                      data-content="amount / ((100-percentage)/100)"
