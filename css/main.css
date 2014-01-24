@@ -13,6 +13,7 @@ textarea {
 body {
     font-size: 1em;
     line-height: 1.4;
+    background-color: #EEEEEE;
 }
 
 ::-moz-selection {
@@ -306,6 +307,63 @@ img.screenshot {
     text-shadow: 0 0.5px 0 rgba(0, 0, 0, 1);
 }
 
+
+@media screen and (min-width: 768px) {
+    .hero {
+        background-image: url('../img/percenter-app-hero.jpg');
+        background-repeat:no-repeat;
+        background-position: center center;
+        text-align: center;
+        padding-bottom: 90px;
+    }
+    .heroBanner {
+        width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 10px 10px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .hero {
+        background-image: url('../img/percenter-app-hero-mobile.jpg');
+        background-repeat:no-repeat;
+        background-position: center center;
+        text-align: center;
+    }
+
+    .heroBanner {
+        padding: 10px 10px;
+    }
+}
+
+h1 {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+    color: #FFFFFF;
+    text-shadow: 0px 1px 1px rgba(0, 0, 0, 1);
+}
+
+.heroBanner {
+    background-color: rgba(255, 255, 255, 0.7);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.heroBanner h1 {
+    color: #FFFFFF;
+}
+
+.jumbotron {
+    margin-bottom: 0px;
+}
+
+.teaser {
+    background-color: #dff0d8;
+}
+.mainArticle {
+    background-color: #FFFFFF;
+}
 /* ==========================================================================
    Media Queries
    ========================================================================== */
