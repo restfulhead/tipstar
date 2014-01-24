@@ -2,11 +2,17 @@ var percenterApp = angular.module('percenterApp', []);
 
 percenterApp.controller('PercenterCtrl', function ($scope, $rootScope)
 {
+    $scope.dividedBy = 1;
+
     $scope.$watch('percentage', function (newValue, oldValue) {
         recalculateApply();
     }, true);
 
     $scope.$watch('amount', function (newValue, oldValue) {
+        recalculateApply();
+    }, true);
+
+    $scope.$watch('dividedBy', function (newValue, oldValue) {
         recalculateApply();
     }, true);
 
@@ -23,6 +29,11 @@ percenterApp.controller('PercenterCtrl', function ($scope, $rootScope)
     {
         $scope.percentage = param[0];
         $scope.amount = param[1];
+
+        if (param.length > 2) {
+            $scope.dividedBy = param[2];
+        }
+
         recalculateApply();
     });
 
@@ -30,17 +41,18 @@ percenterApp.controller('PercenterCtrl', function ($scope, $rootScope)
     {
         var percentage = parseFloat($scope.percentage.toString());
         var amount = parseFloat($scope.amount.toString());
+        var dividedBy = parseFloat($scope.dividedBy.toString());
 
-        $scope.resultPercentage = (percentage / 100) * amount;
-        $scope.resultAmount = amount / (percentage/100);
-        $scope.resultAdd = amount + ((percentage / 100) * amount)
-        $scope.resultSubtract = amount - ((percentage / 100) * amount)
+        $scope.resultPercentage = ( (percentage / 100) * amount ) / dividedBy;
+        $scope.resultAmount = ( amount / (percentage/100) ) / dividedBy;
+        $scope.resultAdd = ( amount + ((percentage / 100) * amount) ) / dividedBy;
+        $scope.resultSubtract = ( amount - ((percentage / 100) * amount) ) / dividedBy;
 
         var reducedPercentage = $scope.reducedPercentage = 100 - percentage;
-        $scope.resultReduced = amount / (reducedPercentage/100);
+        $scope.resultReduced = ( amount / (reducedPercentage/100) ) / dividedBy;
 
         var increasedPercentage = $scope.increasedPercentage = 100 + percentage;
-        $scope.resultIncreased = amount / (increasedPercentage/100);
+        $scope.resultIncreased = ( amount / (increasedPercentage/100) ) / dividedBy;
     }
 
     function recalculateCompare()
@@ -81,6 +93,7 @@ percenterApp.controller('HomeScreenCtrl', function ($scope, $rootScope)
     $scope.showExample = function(number) {
         var param = new Array();
 
+        $('#resultPercentageColumn').removeClass('highlight');
         $('#resultAddColumn').removeClass('highlight');
         $('#resultSubtractColumn').removeClass('highlight');
         $('#resultIncreasedColumn').removeClass('highlight');
@@ -90,24 +103,30 @@ percenterApp.controller('HomeScreenCtrl', function ($scope, $rootScope)
             case 1:
                 param[0] = 18;
                 param[1] = 30;
+                $('#resultPercentageColumn').addClass('highlight');
                 $('#resultAddColumn').addClass('highlight');
                 break;
 
             case 2:
                 param[0] = 18;
                 param[1] = 50;
+                param[2] = 2;
+                $('#resultPercentageColumn').addClass('highlight');
                 $('#resultAddColumn').addClass('highlight');
                 break;
 
             case 3:
                 param[0] = 18;
                 param[1] = 70;
+                param[2] = 4;
+                $('#resultPercentageColumn').addClass('highlight');
                 $('#resultAddColumn').addClass('highlight');
                 break;
 
             case 4:
                 param[0] = 40;
                 param[1] = 60;
+                $('#resultPercentageColumn').addClass('highlight');
                 $('#resultSubtractColumn').addClass('highlight');
                 break;
 

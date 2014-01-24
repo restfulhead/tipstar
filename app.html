@@ -72,23 +72,36 @@
                     <div class="actionBox">
                         <form class="form-inline">
                             <div class="row">
-                                <div class="col-sm-6">
-                                    <label style="width: 50px" for="inputPercentage">Apply</label>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                    <label style="width: 55px" for="inputPercentage">Apply</label>
 
                                     <div class="input-group">
                                         <input type="number" class="form-control" id="inputPercentage"
                                                placeholder="0.00" ng-model="percentage" autofocus="autofocus"/>
                                         <span class="input-group-addon">%</span>
                                     </div>
+                                        </div>
                                 </div>
-                                <div class="col-sm-6">
+                                <div class="col-sm-4">
                                     <div class="form-group">
-                                        <label style="width: 50px" for="inputAmount">to</label>
+                                        <label style="width: 55px" for="inputAmount">to</label>
 
                                         <div class="input-group">
                                             <input type="number" class="form-control" id="inputAmount"
                                                    placeholder="0.00" ng-model="amount"/>
-                                            <span class="input-group-addon">=&nbsp;</span>
+                                            <span class="input-group-addon">$&nbsp;</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label style="width: 55px" for="inputDividedBy">div. by</label>
+
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" id="inputDividedBy"
+                                                   placeholder="1" ng-model="dividedBy"/>
+                                            <span class="input-group-addon">/&nbsp;&nbsp;</span>
                                         </div>
                                     </div>
                                 </div>
@@ -107,7 +120,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
+                        <tr id="resultPercentageColumn">
                             <td>{{percentage}}% of {{amount}} is</td>
                             <td class="hidden-xs">&nbsp;</td>
                             <td class="hidden-xs">{{resultPercentage}}</td>
@@ -256,19 +269,19 @@
         </div>
 
         <div ng-controller="HomeScreenCtrl" id="home" >
-            <div class="container" ng-if="activeTabId == 'applyPercentage'">
+            <div class="container nopadding" ng-if="activeTabId == 'applyPercentage'">
                 <h3>Examples</h3>
                 <ul>
-                    <li><a href="#" ng-click="showExample(1)">What is $30 plus 18% tip?</a></li>
-                    <li><a href="#" ng-click="showExample(2)">What is $50 plus 18% tip?</a></li>
-                    <li><a href="#" ng-click="showExample(3)">What is $70 plus 18% tip?</a></li>
-                    <li><a href="#" ng-click="showExample(4)">What is the total for $60 item that is 40% off?</a></li>
+                    <li><a href="#" ng-click="showExample(1)">How much is 18% tip of $30?</a></li>
+                    <li><a href="#" ng-click="showExample(2)">How much is 18% tip of $50 split by 2?</a></li>
+                    <li><a href="#" ng-click="showExample(3)">How much is 18% tip of $70 split by 4?</a></li>
+                    <li><a href="#" ng-click="showExample(4)">What did I save when I got 40% off of $60?</a></li>
                     <li><a href="#" ng-click="showExample(5)">What is the estimated total for a $399 item plus NYC tax (8.375%)?</a></li>
-                    <li><a href="#" ng-click="showExample(6)">What is the net value of $99 including VAT tax (20%)?</a></li>
+                    <li><a href="#" ng-click="showExample(6)">What is the net value of $99 that includes VAT tax (20%)?</a></li>
                 </ul>
             </div>
 
-            <div class="container">
+            <div class="container nopadding">
                 <h3>Mobile friendly</h3>
                 <img src="apple-touch-icon-57x57-precomposed.png" style="float: left; margin-right: 10px; width: 50px" alt="Percenter app icon"/>
                 <p>This application supports multiple display formats and offline use. Please bookmark me!<br/>
