@@ -2,7 +2,7 @@ var percenterApp = angular.module('percenterApp', []);
 
 percenterApp.controller('PercenterCtrl', function ($scope, $rootScope)
 {
-    $scope.dividedBy = 1;
+    readCookies();
 
     $scope.$watch('percentage', function (newValue, oldValue) {
         recalculateApply();
@@ -16,7 +16,6 @@ percenterApp.controller('PercenterCtrl', function ($scope, $rootScope)
         recalculateApply();
     }, true);
 
-
     $scope.$watch('compareNumberA', function (newValue, oldValue) {
         recalculateCompare();
     }, true);
@@ -24,6 +23,7 @@ percenterApp.controller('PercenterCtrl', function ($scope, $rootScope)
     $scope.$watch('compareNumberB', function (newValue, oldValue) {
         recalculateCompare();
     }, true);
+
 
     $rootScope.$on('applyPercentage', function(event, param)
     {
@@ -64,6 +64,8 @@ percenterApp.controller('PercenterCtrl', function ($scope, $rootScope)
         var increasedPercentage = $scope.increasedPercentage = 100 + percentage;
         $scope.resultIncreased = amount / (increasedPercentage/100);
         $scope.resultIncreasedDiv = $scope.resultIncreased / dividedBy;
+
+        writeCookies();
     }
 
     function recalculateCompare()
@@ -75,6 +77,45 @@ percenterApp.controller('PercenterCtrl', function ($scope, $rootScope)
         $scope.resultNoBPercentage = (numberB / numberA) * 100;
         $scope.resultCompareIncrease = ((numberB / numberA) * 100) - 100;
         $scope.resultCompareDecrease = 100 - ((numberA / numberB) * 100);
+
+        writeCookies();
+    }
+
+    function readCookies()
+    {
+        $.cookie.json = true;
+        var cookieData = $.cookie('percenter');
+        if (cookieData)
+        {
+            if (!$scope.percentage && cookieData.percentage) {
+                $scope.percentage = cookieData.percentage;
+            }
+            if (!$scope.amount && cookieData.amount) {
+                $scope.amount = cookieData.amount;
+            }
+            if (!$scope.dividedBy && cookieData.dividedBy) {
+                $scope.dividedBy = cookieData.dividedBy;
+            }
+            if (!$scope.compareNumberA && cookieData.compareNumberA) {
+                $scope.compareNumberA = cookieData.compareNumberA;
+            }
+            if (!$scope.compareNumberB && cookieData.compareNumberB) {
+                $scope.compareNumberB = cookieData.compareNumberB;
+            }
+        }
+    }
+    
+    function writeCookies()
+    {
+        var cookieData = {
+            "percentage" : $scope.percentage,
+            "amount" : $scope.amount,
+            "dividedBy" : $scope.dividedBy,
+            "compareNumberA" : $scope.compareNumberA,
+            "compareNumberB" : $scope.compareNumberB,
+        };
+
+        $.cookie('percenter', cookieData, { expires: 365 });
     }
 
 });

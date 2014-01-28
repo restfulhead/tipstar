@@ -60,7 +60,6 @@
               <ul class="nav navbar-nav">
                 <li class="active"><a href="#applyPercentage" data-toggle="tab">Apply percentage</a></li>
                 <li><a href="#compareValues" data-toggle="tab">Compare</a></li>
-                <li><a href="legal.html">Legal Notices</a></li>
               </ul>
             </div><!--/.navbar-collapse -->
           </div>
@@ -178,7 +177,7 @@
                             <td class="hidden-xs"><a href="#" class="popover-link glyphicon glyphicon-question-sign"
                                                      rel="popover" data-placement="left" data-trigger="hover"
                                                      data-content="amount - ((percentage / 100) * amount)"
-                                                     data-original-title="{{amount}} - {{percentage}}% = {{resultSubtract.toFixed(2)}}"</a>
+                                                     data-original-title="{{amount}} - {{percentage}}% = {{resultSubtract.toFixed(2)}}"></a>
                             </td>
                         </tr>
                         <tr>
@@ -296,20 +295,48 @@
 
                 <div ng-if="details" ng-include="details"></div>
             </div>
+
+            <div class="container nopadding">
+                <h3>Help and Feedback</h3>
+                <p>Do you have a question for us or would you like to see a new feature? We would love to hear from you! <a href="https://percenter.uservoice.com/">Give us a shout at our support forums.</a></p>
+            </div>
         </div>
 
         <hr>
 
       <footer>
           <div class="container">
-                <p>&copy; <a href="http://ruhkopf.name/">Patrick Ruhkopf</a> 2013-2014</p>
+                <p>&copy; <a href="http://ruhkopf.name/">Patrick Ruhkopf</a> 2013-2014 | <a href="legal.html">Legal Notices</a> | <a href="https://percenter.uservoice.com/">Help and Contact</a></p>
           </div>
       </footer>
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
-	<script src="js/vendor/bootstrap.min.js"></script>
+    <script src="js/vendor/jquery.cookie.js"></script>
+    <script src="js/vendor/bootstrap.min.js"></script>
 	<script src="js/main.js"></script>
+
+    <script>
+        // Include the UserVoice JavaScript SDK (only needed once on a page)
+        UserVoice=window.UserVoice||[];(function(){var uv=document.createElement('script');uv.type='text/javascript';uv.async=true;uv.src='//widget.uservoice.com/Hf8lXMiak49cHoDBzMZ2FQ.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(uv,s)})();
+
+        // Set colors
+        UserVoice.push(['set', {
+            accent_color: '#36AD91',
+            trigger_color: 'white',
+            trigger_background_color: '#57BCA5'
+        }]);
+
+        // Add default trigger to the bottom-right corner of the window:
+        UserVoice.push(['addTrigger', { mode: 'contact', trigger_position: 'bottom-right' }]);
+
+        // Or, use your own custom trigger:
+        //UserVoice.push(['addTrigger', '#id', { mode: 'contact' }]);
+
+        // Autoprompt for Satisfaction and SmartVote (only displayed under certain conditions)
+        UserVoice.push(['autoprompt', {}]);
+    </script>
+
 
     </body>
 </html>
