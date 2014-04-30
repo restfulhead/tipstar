@@ -170,6 +170,15 @@ nav a:hover {
    Author's custom styles: Patrick Ruhkopf
    ========================================================================== */
 
+.emphasize {
+    font-weight: bold;
+    color: #099746;
+}
+
+.text-small {
+    font-size: small;
+}
+
 .container .nopadding {
     padding-left: 0px;
     padding-right: 0px;
@@ -254,6 +263,8 @@ img.screenshot {
 .actionBox label
 {
     color: #FFFFFF;
+    width: 65px;
+    margin-right: 10px;
 }
 
 .actionBox .table thead > tr > th {
@@ -271,7 +282,6 @@ img.screenshot {
 }
 
 .actionBox .form-control {
-    #color: #B1B1B1;
     color: #FFFFFF;
     background-color: rgb(74, 74, 74);
     border: 1px solid rgb(63, 63, 63);
@@ -282,8 +292,10 @@ img.screenshot {
     box-shadow: 0 1px 1px rgba(0,0,0,0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6);
 }
 
-.actionBox a {
-    color: #28a98b;
+.actionBox .input-group-addon-hidden {
+    padding: 1px 1px;
+    border: none;
+    background-color: transparent;
 }
 
 .actionBox .popover {

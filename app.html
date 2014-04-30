@@ -58,8 +58,9 @@
             </div>
             <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
-                <li class="active"><a href="#applyPercentage" data-toggle="tab">Apply percentage</a></li>
-                <li><a href="#compareValues" data-toggle="tab">Compare</a></li>
+                <li class="active"><a href="#calculateTip" data-toggle="tab">Calculate Tip</a></li>
+                <li><a href="#applyPercentage" data-toggle="tab">Calculate Percentage</a></li>
+                <li><a href="#compareValues" data-toggle="tab">Compare amounts</a></li>
               </ul>
             </div><!--/.navbar-collapse -->
           </div>
@@ -67,24 +68,96 @@
 
         <div class="container" ng-controller="PercenterCtrl">
             <div class="tab-content">
-                <div class="tab-pane fade in active" id="applyPercentage">
+
+                <div class="tab-pane fade in active" id="calculateTip">
                     <div class="actionBox">
                         <form class="form-inline">
                             <div class="row">
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                    <label style="width: 65px" for="inputPercentage">Apply</label>
+                                        <label for="inputTipAmount">Amount</label>
 
-                                    <div class="input-group">
-                                        <input type="number" class="form-control" id="inputPercentage"
-                                               placeholder="0.00" ng-model="percentage" autofocus="autofocus"/>
-                                        <span class="input-group-addon">%</span>
-                                    </div>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" id="inputTipAmount"
+                                                   placeholder="$" ng-model="amount" autofocus="autofocus"/>
+                                            <span class="input-group-addon input-group-addon-hidden">&nbsp;</span>
                                         </div>
+                                    </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                        <label style="width: 65px" for="inputAmount">to</label>
+                                        <label for="inputTipPercentage">Tip</label>
+
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" id="inputTipPercentage"
+                                                   placeholder="%" ng-model="percentage" />
+                                            <span class="input-group-addon input-group-addon-hidden">&nbsp;</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="inputTipDividedBy">split by</label>
+
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" id="inputTipDividedBy"
+                                                   placeholder="1" ng-model="dividedBy"/>
+                                            <span class="input-group-addon input-group-addon-hidden">&nbsp;</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <table class="table table-condensed">
+                        <thead>
+                        <tr>
+                            <th>&nbsp;</th>
+                            <th class="text-right">Tip ({{percentage}}%)</th>
+                            <th class="text-right">Total</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="resultTipTotal">
+                                <td>Total</td>
+                                <td class="text-right">${{resultPercentage.toFixed(2)}}</td>
+                                <td class="text-right emphasize">${{resultAdd.toFixed(2)}}</td>
+                            </tr>
+                            <tr id="resultTipAddColumn">
+                                <td class="text">Total per person</td>
+                                <td class="text-right">${{resultPercentageDiv.toFixed(2)}}</td>
+                                <td class="text-right">${{resultAddDiv.toFixed(2)}}</td>
+                            </tr>
+                            <tr>
+                                <td class="text">&nbsp;</td>
+                                <td class="text">&nbsp;</td>
+                                <td class="text-right text-small"><input id="inputRoundUp" type="checkbox" ng-model="roundUp" />&nbsp;<label for="inputRoundUp">Round up</label>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <div class="tab-pane fade" id="applyPercentage">
+                    <div class="actionBox">
+                        <form class="form-inline">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="inputPercentage">Apply</label>
+
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" id="inputPercentage"
+                                                   placeholder="0.00" ng-model="percentage" autofocus="autofocus"/>
+                                            <span class="input-group-addon">%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="inputAmount">to</label>
 
                                         <div class="input-group">
                                             <input type="number" class="form-control" id="inputAmount"
@@ -95,7 +168,7 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                        <label style="width: 65px" for="inputDividedBy">split by</label>
+                                        <label for="inputDividedBy">split by</label>
 
                                         <div class="input-group">
                                             <input type="number" class="form-control" id="inputDividedBy"
@@ -127,7 +200,7 @@
                             <td class="hidden-xs text-right">{{resultPercentage.toFixed(2)}}</td>
                             <td class="text-right">{{resultPercentageDiv.toFixed(2)}}</td>
                             <td class="hidden-xs"><a href="#" class="popover-link glyphicon glyphicon-question-sign"
-                                                     rel="popover" data-placement="left" data-trigger="click"
+                                                     rel="popover" data-placement="left" data-trigger="hover"
                                                      data-content="(percentage / 100) * amount"
                                                      data-original-title="{{percentage}}% of {{amount}} = {{resultPercentage.toFixed(2)}}"></a>
                             </td>
@@ -203,16 +276,22 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label style="width: 75px" for="inputNoA">Compare</label>
-                                        <input style="width: 180px" type="number" class="form-control" id="inputNoA"
-                                               placeholder="0.00" ng-model="compareNumberA"/>
+                                        <label for="inputNoA">Compare</label>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" id="inputNoA"
+                                                   placeholder="0.00" ng-model="compareNumberA"/>
+                                            <span class="input-group-addon input-group-addon-hidden">&nbsp;</span>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label style="width: 75px" for="inputNoB">to</label>
-                                        <input style="width: 180px" type="number" class="form-control" id="inputNoB"
-                                               placeholder="0.00" ng-model="compareNumberB"/>
+                                        <label for="inputNoB">to</label>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" id="inputNoB"
+                                                   placeholder="0.00" ng-model="compareNumberB"/>
+                                            <span class="input-group-addon input-group-addon-hidden">&nbsp;</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -4,6 +4,14 @@ percenterApp.controller('PercenterCtrl', function ($scope, $rootScope)
 {
     readCookies();
 
+    if (!$scope.roundUp) {
+        $scope.roundUp = true;
+    }
+
+    if (!$scope.dividedBy) {
+        $scope.dividedBy = 1;
+    }
+
     $scope.$watch('percentage', function (newValue, oldValue) {
         recalculateApply();
     }, true);
@@ -13,6 +21,10 @@ percenterApp.controller('PercenterCtrl', function ($scope, $rootScope)
     }, true);
 
     $scope.$watch('dividedBy', function (newValue, oldValue) {
+        recalculateApply();
+    }, true);
+
+    $scope.$watch('roundUp', function (newValue, oldValue) {
         recalculateApply();
     }, true);
 
@@ -44,6 +56,7 @@ percenterApp.controller('PercenterCtrl', function ($scope, $rootScope)
         var percentage = parseFloat($scope.percentage.toString());
         var amount = parseFloat($scope.amount.toString());
         var dividedBy = parseFloat($scope.dividedBy.toString());
+        var roundUp = $scope.roundUp;
 
         $scope.resultPercentage = (percentage / 100) * amount;
         $scope.resultPercentageDiv = $scope.resultPercentage / dividedBy;
@@ -53,6 +66,13 @@ percenterApp.controller('PercenterCtrl', function ($scope, $rootScope)
 
         $scope.resultAdd = amount + ((percentage / 100) * amount);
         $scope.resultAddDiv = $scope.resultAdd / dividedBy;
+
+        if (roundUp)
+        {
+            $scope.resultAdd = Math.ceil($scope.resultAdd);
+            $scope.resultAddDiv = Math.ceil($scope.resultAddDiv);
+
+        }
 
         $scope.resultSubtract = amount - ((percentage / 100) * amount);
         $scope.resultSubtractDiv = $scope.resultSubtract / dividedBy;
@@ -96,6 +116,9 @@ percenterApp.controller('PercenterCtrl', function ($scope, $rootScope)
             if (!$scope.dividedBy && cookieData.dividedBy) {
                 $scope.dividedBy = cookieData.dividedBy;
             }
+            if (!$scope.roundUp && cookieData.roundUp) {
+                $scope.roundUp = cookieData.roundUp;
+            }
             if (!$scope.compareNumberA && cookieData.compareNumberA) {
                 $scope.compareNumberA = cookieData.compareNumberA;
             }
@@ -111,6 +134,7 @@ percenterApp.controller('PercenterCtrl', function ($scope, $rootScope)
             "percentage" : $scope.percentage,
             "amount" : $scope.amount,
             "dividedBy" : $scope.dividedBy,
+            "roundUp" : $scope.roundUp,
             "compareNumberA" : $scope.compareNumberA,
             "compareNumberB" : $scope.compareNumberB,
         };
@@ -122,7 +146,7 @@ percenterApp.controller('PercenterCtrl', function ($scope, $rootScope)
 
 percenterApp.controller('HomeScreenCtrl', function ($scope, $rootScope)
 {
-    $scope.activeTabId = "applyPercentage";
+    $scope.activeTabId = "calculateTip";
 
     $scope.$watch('currentLink', function (newValue, oldValue)
     {
