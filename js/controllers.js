@@ -1,6 +1,6 @@
-var percenterApp = angular.module('percenterApp', []);
+var tipStarApp = angular.module('TipStarApp', []);
 
-percenterApp.controller('PercenterCtrl', function ($scope, $rootScope)
+tipStarApp.controller('TipStarCtrl', function ($scope, $rootScope)
 {
     readCookies();
 
@@ -104,7 +104,7 @@ percenterApp.controller('PercenterCtrl', function ($scope, $rootScope)
     function readCookies()
     {
         $.cookie.json = true;
-        var cookieData = $.cookie('percenter');
+        var cookieData = $.cookie('tipstar');
         if (cookieData)
         {
             if (!$scope.percentage && cookieData.percentage) {
@@ -139,12 +139,12 @@ percenterApp.controller('PercenterCtrl', function ($scope, $rootScope)
             "compareNumberB" : $scope.compareNumberB,
         };
 
-        $.cookie('percenter', cookieData, { expires: 365 });
+        $.cookie('tipstar', cookieData, { expires: 365 });
     }
 
 });
 
-percenterApp.controller('HomeScreenCtrl', function ($scope, $rootScope)
+tipStarApp.controller('HomeScreenCtrl', function ($scope, $rootScope)
 {
     $scope.activeTabId = "calculateTip";
 
@@ -159,7 +159,7 @@ percenterApp.controller('HomeScreenCtrl', function ($scope, $rootScope)
     $scope.$watch('showDetails', function (newValue, oldValue)
     {
         if (newValue) {
-            $scope.details = "partials/how-to-add-percenter-to-home-screen.html";
+            $scope.details = "partials/how-to-add-tip-star-to-home-screen.html";
         }
         else {
             $scope.details = null;

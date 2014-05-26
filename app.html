@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="percenterApp" id="ng-app" manifest="/application.manifest">
+<html ng-app="TipStarApp" id="ng-app" manifest="/application.manifest">
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
@@ -7,8 +7,8 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Percenter - A percentage calculator</title>
-        <meta name="description" content="A percentage calculator">
+        <title>Tip Star - A percentage calculator</title>
+        <meta name="description" content="A tip and percentage calculator">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
         <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -54,7 +54,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="index.html">Percenter</a>
+              <a class="navbar-brand" href="index.html">Tip Star</a>
             </div>
             <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
@@ -66,7 +66,7 @@
           </div>
         </div>
 
-        <div class="container" ng-controller="PercenterCtrl">
+        <div class="container mainArticle" ng-controller="TipStarCtrl">
             <div class="tab-content">
 
                 <div class="tab-pane fade in active" id="calculateTip">
@@ -368,9 +368,9 @@
 
             <div class="container nopadding">
                 <h3>Mobile friendly</h3>
-                <img src="apple-touch-icon-57x57-precomposed.png" style="float: left; margin-right: 10px; width: 50px" alt="Percenter app icon"/>
+                <img src="apple-touch-icon-57x57-precomposed.png" style="float: left; margin-right: 10px; width: 50px" alt="Tip Star app icon"/>
                 <p>This application supports multiple display formats and offline use. Please bookmark me!<br/>
-                   If you are using an iPhone or iPad, you can also easily add Percenter to your home screen. In Safari just click on the little export icon with the arrow in the toolbar at the bottom. <a href="#" ng-click="showDetails = !showDetails">Click here for more details.</a> </p>
+                   If you are using an iPhone or iPad, you can also easily add Tip Star to your home screen. In Safari just click on the little export icon with the arrow in the toolbar at the bottom. <a href="#" ng-click="showDetails = !showDetails">Click here for more details.</a> </p>
 
                 <div ng-if="details" ng-include="details"></div>
             </div>

@@ -330,15 +330,17 @@ img.screenshot {
 
 
 @media screen and (min-width: 768px) {
-    .hero {
+    .hero .container {
         background-image: url('../img/percenter-app-hero.jpg');
         background-repeat:no-repeat;
-        background-position: center center;
+        background-position: right center;
+    }
+
+    .hero {
         text-align: center;
-        padding-bottom: 90px;
     }
     .heroBanner {
-        width: 500px;
+        width: 400px;
         margin-left: auto;
         margin-right: auto;
         padding: 10px 10px;
@@ -354,7 +356,13 @@ img.screenshot {
     }
 
     .heroBanner {
-        padding: 10px 10px;
+        width: 375px;
+    }
+}
+
+@media screen and (min-width: 1170px) {
+    .heroBanner {
+        width: 500px;
     }
 }
 
@@ -366,9 +374,12 @@ h1 {
 }
 
 .heroBanner {
-    background-color: rgba(255, 255, 255, 0.7);
-    margin-left: auto;
+    background-color: rgba(223, 240, 216, 0.7);
+    margin-left: 0px;
     margin-right: auto;
+    color: #FFFFFF;
+    text-shadow: 0px 1px 1px rgba(0, 0, 0, 1);
+    font-family: "HelveticaNeue-Thin", "Helvetica Neue Thin", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
 .heroBanner h1 {
@@ -377,6 +388,11 @@ h1 {
 
 .jumbotron {
     margin-bottom: 0px;
+    padding: 0px;
+}
+
+.jumbotron .container {
+    padding:0px;
 }
 
 .teaser {
@@ -391,9 +407,9 @@ h1 {
 
 @media only screen and (min-width: 480px) {
 
-/* ====================
-    INTERMEDIATE: Menu
-   ==================== */
+    /* ====================
+        INTERMEDIATE: Menu
+       ==================== */
 
     nav a {
         float: left;
@@ -411,9 +427,9 @@ h1 {
         margin-right: 0;
     }
 
-/* ========================
-    INTERMEDIATE: IE Fixes
-   ======================== */
+    /* ========================
+        INTERMEDIATE: IE Fixes
+       ======================== */
 
     nav ul li {
         display: inline;
@@ -426,20 +442,20 @@ h1 {
 
 @media only screen and (min-width: 768px) {
 
-/* ====================
-    WIDE: CSS3 Effects
-   ==================== */
+    /* ====================
+        WIDE: CSS3 Effects
+       ==================== */
 
     .header-container,
     .main aside {
         -webkit-box-shadow: 0 5px 10px #aaa;
-           -moz-box-shadow: 0 5px 10px #aaa;
-                box-shadow: 0 5px 10px #aaa;
+        -moz-box-shadow: 0 5px 10px #aaa;
+        box-shadow: 0 5px 10px #aaa;
     }
 
-/* ============
-    WIDE: Menu
-   ============ */
+    /* ============
+        WIDE: Menu
+       ============ */
 
     .title {
         float: left;
@@ -450,9 +466,9 @@ h1 {
         width: 38%;
     }
 
-/* ============
-    WIDE: Main
-   ============ */
+    /* ============
+        WIDE: Main
+       ============ */
 
     .main article {
         float: left;
@@ -467,9 +483,9 @@ h1 {
 
 @media only screen and (min-width: 1140px) {
 
-/* ===============
-    Maximal Width
-   =============== */
+    /* ===============
+        Maximal Width
+       =============== */
 
     .wrapper {
         width: 1026px; /* 1140px - 10% for margins */
