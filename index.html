@@ -122,7 +122,7 @@
         <p><a class="btn btn-primary btn-lg" href="app.html" role="button">Check it out now &raquo;</a></p>
 
         <h3>Help and Feedback</h3>
-        <p>Do you have a question for us or would you like to see a new feature? We would love to hear from you! <a href="https://percenter.uservoice.com/">Give us a shout at our support forums.</a></p>
+        <p>Do you have a question for us or would you like to see a new feature? We would love to hear from you! <a href="https://tip-star.uservoice.com/">Give us a shout at our support forums.</a></p>
 
     </div>
 </article>
@@ -131,7 +131,7 @@
 
 <footer>
     <div class="container">
-        <p>&copy; <a href="http://ruhkopf.name/">Patrick Ruhkopf</a> 2013-2014 | <a href="legal.html">Legal Notices</a> | <a href="https://percenter.uservoice.com/">Help and Contact</a></p>
+        <p>&copy; <a href="http://ruhkopf.name/">Patrick Ruhkopf</a> 2013-2014 | <a href="legal.html">Legal Notices</a> | <a href="https://tip-star.uservoice.com/">Help and Contact</a></p>
     </div>
 </footer>
 
@@ -144,6 +144,11 @@
     // Include the UserVoice JavaScript SDK (only needed once on a page)
     UserVoice=window.UserVoice||[];(function(){var uv=document.createElement('script');uv.type='text/javascript';uv.async=true;uv.src='//widget.uservoice.com/Hf8lXMiak49cHoDBzMZ2FQ.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(uv,s)})();
 
+    //
+    // UserVoice Javascript SDK developer documentation:
+    // https://www.uservoice.com/o/javascript-sdk
+    //
+
     // Set colors
     UserVoice.push(['set', {
         accent_color: '#36AD91',
@@ -152,11 +157,15 @@
     }]);
 
     // Add default trigger to the bottom-right corner of the window:
-    UserVoice.push(['addTrigger', { mode: 'smartvote', trigger_position: 'bottom-right' }]);
+    UserVoice.push(['addTrigger', { mode: 'contact', trigger_position: 'bottom-right' }]);
+
+    // Or, use your own custom trigger:
+    //UserVoice.push(['addTrigger', '#id', { mode: 'contact' }]);
 
     // Autoprompt for Satisfaction and SmartVote (only displayed under certain conditions)
     UserVoice.push(['autoprompt', {}]);
 </script>
+
 
 </body>
 </html>
