@@ -11,16 +11,17 @@
         <meta name="description" content="A tip and percentage calculator">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
+        <!-- build:css css/vendor/vendor-combined.min.css -->
         <link rel="stylesheet" href="css/vendor/bootstrap-3.0.0.min.css">
         <link rel="stylesheet" href="css/vendor/bootstrap-theme.min.css">
+        <!--endbuild -->
 
-		<!-- build:css css/app.min.css -->
+		<!-- build:css css/tipstar-<%= pkg.version %>.min.css -->
         <link rel="stylesheet" href="css/main.css">
-        <link rel="stylesheet" href="css/app.css">
 		<!--endbuild -->
 
-        <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-        <script src="js/vendor/angular-1.2.10.min.js"></script>
+        <script src="scripts/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+        <script src="scripts/vendor/angular-1.2.10.min.js"></script>
 
 		<script type="text/javascript">
 
@@ -38,7 +39,7 @@
 
     </head>
 
-    <body>
+    <body style="background-color: #FFFFFF">
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
@@ -383,15 +384,15 @@
           </div>
       </footer>
 
-	<script src="js/vendor/jquery-1.10.1.min.js"></script>
-    <script src="js/vendor/jquery.cookie-1.4.1.min.js"></script>
+    <!-- build:js scripts/vendor/vendor-combined.min.js -->
+	<script src="scripts/vendor/jquery-1.10.1.min.js"></script>
+    <script src="scripts/vendor/jquery.cookie-1.4.1.min.js"></script>
+    <script src="scripts/vendor/bootstrap-3.0.0.min.js"></script>
+    <!-- endbuild -->
 
-
-    <script src="js/vendor/bootstrap-3.0.0.min.js"></script>
-
-    <!-- build:js scripts/app.min.js -->
-    <script src="js/controllers.js"></script>
-    <script src="js/main.js"></script>
+    <!-- build:js scripts/tipstar-<%= pkg.version %>.min.js -->
+    <script src="scripts/controllers.js"></script>
+    <script src="scripts/main.js"></script>
     <!-- endbuild -->
 
     <script>

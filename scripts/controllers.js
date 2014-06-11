@@ -1,7 +1,6 @@
 var tipStarApp = angular.module('TipStarApp', []);
 
-tipStarApp.controller('TipStarCtrl', function ($scope, $rootScope)
-{
+tipStarApp.controller('TipStarCtrl', ['$scope', '$rootScope', function ($scope, $rootScope) {
     readCookies();
 
     if (!$scope.roundUp) {
@@ -41,8 +40,7 @@ tipStarApp.controller('TipStarCtrl', function ($scope, $rootScope)
     }, true);
 
 
-    $rootScope.$on('applyPercentage', function(event, param)
-    {
+    $rootScope.$on('applyPercentage', function(event, param) {
         $scope.percentage = param[0];
         $scope.amount = param[1];
 
@@ -55,16 +53,40 @@ tipStarApp.controller('TipStarCtrl', function ($scope, $rootScope)
         recalculateApply();
     });
 
-    function recalculateApply()
-    {
+    function recalculateApply() {
         try {
             var percentage = parseFloat($scope.percentage.toString());
             var amount = parseFloat($scope.amount.toString());
             var dividedBy = parseFloat($scope.dividedBy.toString());
             var roundUp = $scope.roundUp;
+
+            $scope.resultPercentage = (percentage / 100) * amount;
+            $scope.resultPercentageDiv = $scope.resultPercentage / dividedBy;
+
+            $scope.resultAmount = amount / (percentage / 100);
+            $scope.resultAmountDiv = $scope.resultAmount / dividedBy;
+
+            $scope.resultAdd = amount + ((percentage / 100) * amount);
+            $scope.resultAddDiv = $scope.resultAdd / dividedBy;
+
+            if (roundUp) {
+                $scope.resultAdd = Math.ceil($scope.resultAdd);
+                $scope.resultAddDiv = Math.ceil($scope.resultAddDiv);
+
+            }
+
+            $scope.resultSubtract = amount - ((percentage / 100) * amount);
+            $scope.resultSubtractDiv = $scope.resultSubtract / dividedBy;
+
+            var reducedPercentage = $scope.reducedPercentage = 100 - percentage;
+            $scope.resultReduced = amount / (reducedPercentage / 100);
+            $scope.resultReducedDiv = $scope.resultReduced / dividedBy;
+
+            var increasedPercentage = $scope.increasedPercentage = 100 + percentage;
+            $scope.resultIncreased = amount / (increasedPercentage / 100);
+            $scope.resultIncreasedDiv = $scope.resultIncreased / dividedBy;
         }
-        catch (ex)
-        {
+        catch (ex) {
             $scope.resultPercentage = null;
             $scope.resultPercentageDiv = null;
 
@@ -86,38 +108,10 @@ tipStarApp.controller('TipStarCtrl', function ($scope, $rootScope)
             return;
         }
 
-        $scope.resultPercentage = (percentage / 100) * amount;
-        $scope.resultPercentageDiv = $scope.resultPercentage / dividedBy;
-
-        $scope.resultAmount = amount / (percentage/100);
-        $scope.resultAmountDiv = $scope.resultAmount / dividedBy;
-
-        $scope.resultAdd = amount + ((percentage / 100) * amount);
-        $scope.resultAddDiv = $scope.resultAdd / dividedBy;
-
-        if (roundUp)
-        {
-            $scope.resultAdd = Math.ceil($scope.resultAdd);
-            $scope.resultAddDiv = Math.ceil($scope.resultAddDiv);
-
-        }
-
-        $scope.resultSubtract = amount - ((percentage / 100) * amount);
-        $scope.resultSubtractDiv = $scope.resultSubtract / dividedBy;
-
-        var reducedPercentage = $scope.reducedPercentage = 100 - percentage;
-        $scope.resultReduced = amount / (reducedPercentage/100);
-        $scope.resultReducedDiv = $scope.resultReduced / dividedBy;
-
-        var increasedPercentage = $scope.increasedPercentage = 100 + percentage;
-        $scope.resultIncreased = amount / (increasedPercentage/100);
-        $scope.resultIncreasedDiv = $scope.resultIncreased / dividedBy;
-
         writeCookies();
     }
 
-    function recalculateCompare()
-    {
+    function recalculateCompare() {
         var numberA = parseFloat($scope.compareNumberA);
         var numberB = parseFloat($scope.compareNumberB);
 
@@ -129,8 +123,7 @@ tipStarApp.controller('TipStarCtrl', function ($scope, $rootScope)
         writeCookies();
     }
 
-    function readCookies()
-    {
+    function readCookies() {
         $.cookie.json = true;
         var cookieData = $.cookie('tipstar');
         if (cookieData)
@@ -156,8 +149,7 @@ tipStarApp.controller('TipStarCtrl', function ($scope, $rootScope)
         }
     }
     
-    function writeCookies()
-    {
+    function writeCookies() {
         var cookieData = {
             "percentage" : $scope.percentage,
             "amount" : $scope.amount,
@@ -170,22 +162,19 @@ tipStarApp.controller('TipStarCtrl', function ($scope, $rootScope)
         $.cookie('tipstar', cookieData, { expires: 365 });
     }
 
-});
+}]);
 
-tipStarApp.controller('HomeScreenCtrl', function ($scope, $rootScope)
-{
+tipStarApp.controller('HomeScreenCtrl', ['$scope', '$rootScope', function ($scope, $rootScope) {
     $scope.activeTabId = "calculateTip";
 
-    $scope.$watch('currentLink', function (newValue, oldValue)
-    {
+    $scope.$watch('currentLink', function (newValue, oldValue) {
         if (newValue) {
             var tabName = newValue.toString();
             $scope.activeTabId = tabName.substr(tabName.indexOf('#') + 1, tabName.length - tabName.indexOf('#') -1);
         }
     }, false);
 
-    $scope.$watch('showDetails', function (newValue, oldValue)
-    {
+    $scope.$watch('showDetails', function (newValue, oldValue) {
         if (newValue) {
             $scope.details = "partials/how-to-add-tip-star-to-home-screen.html";
         }
@@ -202,8 +191,7 @@ tipStarApp.controller('HomeScreenCtrl', function ($scope, $rootScope)
         $('#resultSubtractColumn').removeClass('highlight');
         $('#resultIncreasedColumn').removeClass('highlight');
 
-        switch (number)
-        {
+        switch (number) {
             case 1:
                 param[0] = 18;
                 param[1] = 30;
@@ -252,4 +240,4 @@ tipStarApp.controller('HomeScreenCtrl', function ($scope, $rootScope)
         $rootScope.$broadcast('applyPercentage', param);
         window.scrollTo(0,0);
     };
-});
+}]);

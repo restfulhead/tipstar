@@ -19,23 +19,22 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e)
     var scope = angular.element($("#home")).scope();
     scope.$apply(function(){
         scope.currentLink = e.target;
-    })
-
-})
+    });
+});
 
 
 // select all when focus
 $(function() {
-    $("#inputTipAmount").focus(function () { this.setSelectionRange(0, 9999) } );
-    $("#inputTipPercentage").focus(function () { this.setSelectionRange(0, 9999)} );
-    $("#inputTipDividedBy").focus(function () { this.setSelectionRange(0, 9999)} );
+    $("#inputTipAmount").focus(function () { this.setSelectionRange(0, 9999); } );
+    $("#inputTipPercentage").focus(function () { this.setSelectionRange(0, 9999); } );
+    $("#inputTipDividedBy").focus(function () { this.setSelectionRange(0, 9999); } );
 
-    $("#inputPercentage").focus(function () { this.setSelectionRange(0, 9999)} );
-    $("#inputAmount").focus(function () { this.setSelectionRange(0, 9999)} );
-    $("#inputDividedBy").focus(function () { this.setSelectionRange(0, 9999)} );
+    $("#inputPercentage").focus(function () { this.setSelectionRange(0, 9999); } );
+    $("#inputAmount").focus(function () { this.setSelectionRange(0, 9999); } );
+    $("#inputDividedBy").focus(function () { this.setSelectionRange(0, 9999); } );
 
-    $("#inputNoA").focus(function () { this.setSelectionRange(0, 9999)} );
-    $("#inputNoB").focus(function () { this.setSelectionRange(0, 9999)} );
+    $("#inputNoA").focus(function () { this.setSelectionRange(0, 9999); } );
+    $("#inputNoB").focus(function () { this.setSelectionRange(0, 9999); } );
 });
 
 
