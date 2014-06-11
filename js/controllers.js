@@ -12,6 +12,10 @@ tipStarApp.controller('TipStarCtrl', function ($scope, $rootScope)
         $scope.dividedBy = 1;
     }
 
+    if (!$scope.percentage) {
+        $scope.percentage = 0;
+    }
+
     $scope.$watch('percentage', function (newValue, oldValue) {
         recalculateApply();
     }, true);
@@ -53,10 +57,34 @@ tipStarApp.controller('TipStarCtrl', function ($scope, $rootScope)
 
     function recalculateApply()
     {
-        var percentage = parseFloat($scope.percentage.toString());
-        var amount = parseFloat($scope.amount.toString());
-        var dividedBy = parseFloat($scope.dividedBy.toString());
-        var roundUp = $scope.roundUp;
+        try {
+            var percentage = parseFloat($scope.percentage.toString());
+            var amount = parseFloat($scope.amount.toString());
+            var dividedBy = parseFloat($scope.dividedBy.toString());
+            var roundUp = $scope.roundUp;
+        }
+        catch (ex)
+        {
+            $scope.resultPercentage = null;
+            $scope.resultPercentageDiv = null;
+
+            $scope.resultAmount = null;
+            $scope.resultAmountDiv = null;
+
+            $scope.resultAdd = null;
+            $scope.resultAddDiv = null;
+
+            $scope.resultSubtract = null;
+            $scope.resultSubtractDiv = null;
+
+            $scope.resultReduced = null;
+            $scope.resultReducedDiv = null;
+
+            $scope.resultIncreased = null;
+            $scope.resultIncreasedDiv = null;
+
+            return;
+        }
 
         $scope.resultPercentage = (percentage / 100) * amount;
         $scope.resultPercentageDiv = $scope.resultPercentage / dividedBy;

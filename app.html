@@ -11,8 +11,8 @@
         <meta name="description" content="A tip and percentage calculator">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="css/vendor/bootstrap-3.0.0.min.css">
+        <link rel="stylesheet" href="css/vendor/bootstrap-theme.min.css">
 
 		<!-- build:css css/combined.css -->
         <link rel="stylesheet" href="css/main.css">
@@ -21,7 +21,7 @@
 
 		<!-- build:js scripts/combined.js -->
         <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-        <script src="js/vendor/angular.min.js"></script>
+        <script src="js/vendor/angular-1.2.10.min.js"></script>
         <script src="js/controllers.js"></script>
 		<!-- endbuild -->
 
@@ -369,9 +369,7 @@
                 <h3>Mobile friendly</h3>
                 <img src="apple-touch-icon-57x57-precomposed.png" style="float: left; margin-right: 10px; width: 50px" alt="Tip Star app icon"/>
                 <p>This application supports multiple display formats and offline use. Please bookmark me!<br/>
-                   If you are using an iPhone or iPad, you can also easily add Tip Star to your home screen. In Safari just click on the little export icon with the arrow in the toolbar at the bottom. <a href="#" ng-click="showDetails = !showDetails">Click here for more details.</a> </p>
-
-                <div ng-if="details" ng-include="details"></div>
+                   If you are using an iPhone or iPad, you can also easily add Tip Star to your home screen. In Safari just click on the little export icon with the arrow in the toolbar at the bottom. <a href="https://tip-star.uservoice.com/knowledgebase/articles/310566-add-tip-star-to-your-iphone-home-screen">Click here for more details.</a> </p>
             </div>
 
             <div class="container nopadding">
@@ -388,10 +386,11 @@
           </div>
       </footer>
 
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
-    <script src="js/vendor/jquery.cookie.js"></script>
-    <script src="js/vendor/bootstrap.min.js"></script>
+	<script src="js/vendor/jquery-1.10.1.min.js"></script>
+    <script src="js/vendor/jquery.cookie-1.4.1.min.js"></script>
+
+
+    <script src="js/vendor/bootstrap-3.0.0.min.js"></script>
 	<script src="js/main.js"></script>
 
     <script>

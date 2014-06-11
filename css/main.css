@@ -294,6 +294,11 @@ img.screenshot {
     box-shadow: 0 1px 1px rgba(0,0,0,0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6);
 }
 
+.actionBox .form-control-error:focus, .actionBox .form-control-error {
+    border-color: #ac2925;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.075) inset, 0 0 8px rgba(172, 41, 37, 1);
+}
+
 .actionBox .input-group-addon-hidden {
     padding: 1px 1px;
     border: none;
