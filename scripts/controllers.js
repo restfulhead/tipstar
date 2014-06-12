@@ -16,33 +16,29 @@ tipStarApp.controller('TipStarCtrl', ['$scope', '$rootScope', '$analytics', '$ti
     }
 
     var timeoutPromise;
-    var delayInMs = 2000;
 
     $scope.$watch('percentage', function (newValue, oldValue) {
-        $timeout.cancel(timeoutPromise);
-        timeoutPromise = $timeout(function() {
-            recalculateApply('percentage', newValue);
-        }, delayInMs);
+        recalculateApply(800);
     }, true);
 
     $scope.$watch('amount', function (newValue, oldValue) {
-        recalculateApply('amount', newValue);
+        recalculateApply(800);
     }, true);
 
     $scope.$watch('dividedBy', function (newValue, oldValue) {
-        recalculateApply('dividedBy', newValue);
+        recalculateApply(200);
     }, true);
 
     $scope.$watch('roundUp', function (newValue, oldValue) {
-        recalculateApply('roundUp', newValue);
+        recalculateApply(200);
     }, true);
 
     $scope.$watch('compareNumberA', function (newValue, oldValue) {
-        recalculateCompare('compareNumberA', newValue);
+        recalculateCompare(800);
     }, true);
 
     $scope.$watch('compareNumberB', function (newValue, oldValue) {
-        recalculateCompare('compareNumberB', newValue);
+        recalculateCompare(500);
     }, true);
 
 
@@ -56,90 +52,103 @@ tipStarApp.controller('TipStarCtrl', ['$scope', '$rootScope', '$analytics', '$ti
             $scope.dividedBy = 1;
         }
 
-        recalculateApply('applyPercentage', param[0]);
+        recalculateApply(100);
     });
 
-    function recalculateApply(source, newValue) {
-        try {
-            var percentage = parseFloat($scope.percentage.toString());
-            var amount = parseFloat($scope.amount.toString());
-            var dividedBy = parseFloat($scope.dividedBy.toString());
-            var roundUp = $scope.roundUp;
+    function recalculateApply(delayInMs)
+    {
+        $('body').css('cursor', 'progress');
+        $timeout.cancel(timeoutPromise);
+        timeoutPromise = $timeout(function() {
+            $('body').css('cursor', 'auto');
+            try {
+                var percentage = parseFloat($scope.percentage.toString());
+                var amount = parseFloat($scope.amount.toString());
+                var dividedBy = parseFloat($scope.dividedBy.toString());
+                var roundUp = $scope.roundUp;
 
-            $analytics.eventTrack('RecalculatePercentage', {  category: 'App', label: source, value: newValue });
+                $analytics.eventTrack('RecalculatePercentage', {  category: 'App', value: amount });
 
-            $scope.resultPercentage = (percentage / 100) * amount;
-            $scope.resultPercentageDiv = $scope.resultPercentage / dividedBy;
+                $scope.resultPercentage = (percentage / 100) * amount;
+                $scope.resultPercentageDiv = $scope.resultPercentage / dividedBy;
 
-            $scope.resultAmount = amount / (percentage / 100);
-            $scope.resultAmountDiv = $scope.resultAmount / dividedBy;
+                $scope.resultAmount = amount / (percentage / 100);
+                $scope.resultAmountDiv = $scope.resultAmount / dividedBy;
 
-            $scope.resultAdd = amount + ((percentage / 100) * amount);
-            $scope.resultAddDiv = $scope.resultAdd / dividedBy;
+                $scope.resultAdd = amount + ((percentage / 100) * amount);
+                $scope.resultAddDiv = $scope.resultAdd / dividedBy;
 
-            if (roundUp) {
-                $scope.resultAdd = Math.ceil($scope.resultAdd);
-                $scope.resultAddDiv = Math.ceil($scope.resultAddDiv);
+                if (roundUp) {
+                    $scope.resultAdd = Math.ceil($scope.resultAdd);
+                    $scope.resultAddDiv = Math.ceil($scope.resultAddDiv);
+                }
 
+                $scope.resultSubtract = amount - ((percentage / 100) * amount);
+                $scope.resultSubtractDiv = $scope.resultSubtract / dividedBy;
+
+                var reducedPercentage = $scope.reducedPercentage = 100 - percentage;
+                $scope.resultReduced = amount / (reducedPercentage / 100);
+                $scope.resultReducedDiv = $scope.resultReduced / dividedBy;
+
+                var increasedPercentage = $scope.increasedPercentage = 100 + percentage;
+                $scope.resultIncreased = amount / (increasedPercentage / 100);
+                $scope.resultIncreasedDiv = $scope.resultIncreased / dividedBy;
+            }
+            catch (ex) {
+                removeAllResultsPercentage();
+                return;
             }
 
-            $scope.resultSubtract = amount - ((percentage / 100) * amount);
-            $scope.resultSubtractDiv = $scope.resultSubtract / dividedBy;
-
-            var reducedPercentage = $scope.reducedPercentage = 100 - percentage;
-            $scope.resultReduced = amount / (reducedPercentage / 100);
-            $scope.resultReducedDiv = $scope.resultReduced / dividedBy;
-
-            var increasedPercentage = $scope.increasedPercentage = 100 + percentage;
-            $scope.resultIncreased = amount / (increasedPercentage / 100);
-            $scope.resultIncreasedDiv = $scope.resultIncreased / dividedBy;
-        }
-        catch (ex) {
-            $scope.resultPercentage = null;
-            $scope.resultPercentageDiv = null;
-
-            $scope.resultAmount = null;
-            $scope.resultAmountDiv = null;
-
-            $scope.resultAdd = null;
-            $scope.resultAddDiv = null;
-
-            $scope.resultSubtract = null;
-            $scope.resultSubtractDiv = null;
-
-            $scope.resultReduced = null;
-            $scope.resultReducedDiv = null;
-
-            $scope.resultIncreased = null;
-            $scope.resultIncreasedDiv = null;
-
-            return;
-        }
-
-        writeCookies();
+            writeCookies();
+        }, delayInMs);
     }
 
-    function recalculateCompare(source, newValue) {
-        try {
-            var numberA = parseFloat($scope.compareNumberA);
-            var numberB = parseFloat($scope.compareNumberB);
+    function removeAllResultsPercentage() {
+        $scope.resultPercentage = null;
+        $scope.resultPercentageDiv = null;
 
-            $analytics.eventTrack('ComparePercentage', {  category: 'App', label: source, value: newValue });
+        $scope.resultAmount = null;
+        $scope.resultAmountDiv = null;
 
-            $scope.resultNoAPercentage = (numberA / numberB) * 100;
-            $scope.resultNoBPercentage = (numberB / numberA) * 100;
-            $scope.resultCompareIncrease = ((numberB / numberA) * 100) - 100;
-            $scope.resultCompareDecrease = 100 - ((numberA / numberB) * 100);
-        }
-        catch (ex) {
-            $scope.resultNoAPercentage = null;
-            $scope.resultNoBPercentage = null;
-            $scope.resultCompareIncrease = null;
-            $scope.resultCompareDecrease = null;
+        $scope.resultAdd = null;
+        $scope.resultAddDiv = null;
 
-        }
-        writeCookies();
+        $scope.resultSubtract = null;
+        $scope.resultSubtractDiv = null;
+
+        $scope.resultReduced = null;
+        $scope.resultReducedDiv = null;
+
+        $scope.resultIncreased = null;
+        $scope.resultIncreasedDiv = null;
     }
+
+    function recalculateCompare(delayInMs) {
+        $timeout.cancel(timeoutPromise);
+        timeoutPromise = $timeout(function() {
+
+            try {
+                var numberA = parseFloat($scope.compareNumberA);
+                var numberB = parseFloat($scope.compareNumberB);
+
+                $analytics.eventTrack('ComparePercentage', {  category: 'App' });
+
+                $scope.resultNoAPercentage = (numberA / numberB) * 100;
+                $scope.resultNoBPercentage = (numberB / numberA) * 100;
+                $scope.resultCompareIncrease = ((numberB / numberA) * 100) - 100;
+                $scope.resultCompareDecrease = 100 - ((numberA / numberB) * 100);
+            }
+            catch (ex) {
+                $scope.resultNoAPercentage = null;
+                $scope.resultNoBPercentage = null;
+                $scope.resultCompareIncrease = null;
+                $scope.resultCompareDecrease = null;
+
+            }
+            writeCookies();
+        }, delayInMs);
+    }
+
 
     function readCookies() {
         $.cookie.json = true;
@@ -174,7 +183,7 @@ tipStarApp.controller('TipStarCtrl', ['$scope', '$rootScope', '$analytics', '$ti
             "dividedBy" : $scope.dividedBy,
             "roundUp" : $scope.roundUp,
             "compareNumberA" : $scope.compareNumberA,
-            "compareNumberB" : $scope.compareNumberB,
+            "compareNumberB" : $scope.compareNumberB
         };
 
         $.cookie('tipstar', cookieData, { expires: 365 });
