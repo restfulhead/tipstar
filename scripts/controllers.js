@@ -1,6 +1,6 @@
-var tipStarApp = angular.module('TipStarApp', []);
+var tipStarApp = angular.module('TipStarApp', ['angulartics', 'angulartics.google.analytics']);
 
-tipStarApp.controller('TipStarCtrl', ['$scope', '$rootScope', function ($scope, $rootScope) {
+tipStarApp.controller('TipStarCtrl', ['$scope', '$rootScope', '$analytics', '$timeout', function ($scope, $rootScope, $analytics, $timeout) {
     readCookies();
 
     if (!$scope.roundUp) {
@@ -15,28 +15,34 @@ tipStarApp.controller('TipStarCtrl', ['$scope', '$rootScope', function ($scope, 
         $scope.percentage = 0;
     }
 
+    var timeoutPromise;
+    var delayInMs = 2000;
+
     $scope.$watch('percentage', function (newValue, oldValue) {
-        recalculateApply();
+        $timeout.cancel(timeoutPromise);
+        timeoutPromise = $timeout(function() {
+            recalculateApply('percentage', newValue);
+        }, delayInMs);
     }, true);
 
     $scope.$watch('amount', function (newValue, oldValue) {
-        recalculateApply();
+        recalculateApply('amount', newValue);
     }, true);
 
     $scope.$watch('dividedBy', function (newValue, oldValue) {
-        recalculateApply();
+        recalculateApply('dividedBy', newValue);
     }, true);
 
     $scope.$watch('roundUp', function (newValue, oldValue) {
-        recalculateApply();
+        recalculateApply('roundUp', newValue);
     }, true);
 
     $scope.$watch('compareNumberA', function (newValue, oldValue) {
-        recalculateCompare();
+        recalculateCompare('compareNumberA', newValue);
     }, true);
 
     $scope.$watch('compareNumberB', function (newValue, oldValue) {
-        recalculateCompare();
+        recalculateCompare('compareNumberB', newValue);
     }, true);
 
 
@@ -50,15 +56,17 @@ tipStarApp.controller('TipStarCtrl', ['$scope', '$rootScope', function ($scope, 
             $scope.dividedBy = 1;
         }
 
-        recalculateApply();
+        recalculateApply('applyPercentage', param[0]);
     });
 
-    function recalculateApply() {
+    function recalculateApply(source, newValue) {
         try {
             var percentage = parseFloat($scope.percentage.toString());
             var amount = parseFloat($scope.amount.toString());
             var dividedBy = parseFloat($scope.dividedBy.toString());
             var roundUp = $scope.roundUp;
+
+            $analytics.eventTrack('RecalculatePercentage', {  category: 'App', label: source, value: newValue });
 
             $scope.resultPercentage = (percentage / 100) * amount;
             $scope.resultPercentageDiv = $scope.resultPercentage / dividedBy;
@@ -111,15 +119,25 @@ tipStarApp.controller('TipStarCtrl', ['$scope', '$rootScope', function ($scope, 
         writeCookies();
     }
 
-    function recalculateCompare() {
-        var numberA = parseFloat($scope.compareNumberA);
-        var numberB = parseFloat($scope.compareNumberB);
+    function recalculateCompare(source, newValue) {
+        try {
+            var numberA = parseFloat($scope.compareNumberA);
+            var numberB = parseFloat($scope.compareNumberB);
 
-        $scope.resultNoAPercentage = (numberA / numberB) * 100;
-        $scope.resultNoBPercentage = (numberB / numberA) * 100;
-        $scope.resultCompareIncrease = ((numberB / numberA) * 100) - 100;
-        $scope.resultCompareDecrease = 100 - ((numberA / numberB) * 100);
+            $analytics.eventTrack('ComparePercentage', {  category: 'App', label: source, value: newValue });
 
+            $scope.resultNoAPercentage = (numberA / numberB) * 100;
+            $scope.resultNoBPercentage = (numberB / numberA) * 100;
+            $scope.resultCompareIncrease = ((numberB / numberA) * 100) - 100;
+            $scope.resultCompareDecrease = 100 - ((numberA / numberB) * 100);
+        }
+        catch (ex) {
+            $scope.resultNoAPercentage = null;
+            $scope.resultNoBPercentage = null;
+            $scope.resultCompareIncrease = null;
+            $scope.resultCompareDecrease = null;
+
+        }
         writeCookies();
     }
 
@@ -164,13 +182,14 @@ tipStarApp.controller('TipStarCtrl', ['$scope', '$rootScope', function ($scope, 
 
 }]);
 
-tipStarApp.controller('HomeScreenCtrl', ['$scope', '$rootScope', function ($scope, $rootScope) {
+tipStarApp.controller('HomeScreenCtrl', ['$scope', '$rootScope', '$analytics', function ($scope, $rootScope, $analytics) {
     $scope.activeTabId = "calculateTip";
 
     $scope.$watch('currentLink', function (newValue, oldValue) {
         if (newValue) {
             var tabName = newValue.toString();
             $scope.activeTabId = tabName.substr(tabName.indexOf('#') + 1, tabName.length - tabName.indexOf('#') -1);
+            $analytics.pageTrack("/" + $scope.activeTabId);
         }
     }, false);
 

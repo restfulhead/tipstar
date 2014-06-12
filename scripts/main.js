@@ -88,13 +88,13 @@ function validateInput(elem)
 
 function addErrorClass(elem)
 {
-    if (!elem.className.contains("form-control-error")) {
+    if (elem.className && elem.className.indexOf("form-control-error") == -1) {
         elem.className = elem.className + " form-control-error";
     }
 }
 function removeErrorClass(elem)
 {
-    if (elem.className.contains("form-control-error")) {
+    if (elem.className && elem.className.indexOf("form-control-error") > -1) {
         elem.className = elem.className.substr(0, elem.className.length-19);
     }
 }

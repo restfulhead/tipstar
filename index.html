@@ -21,155 +21,153 @@
     <!--endbuild -->
 
     <script src="scripts/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-
     <script type="text/javascript">
-
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-45866113-1']);
-        _gaq.push(['_trackPageview']);
-
-        (function() {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
-
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-45866113-1', { 'cookieDomain': 'none' });
     </script>
 
 </head>
 
 <body>
-<!--[if lt IE 7]>
-<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
-<![endif]-->
-<div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="index.html">Tip Star</a>
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="app.html">App</a></li>
-            </ul>
-        </div><!--/.navbar-collapse -->
-    </div>
-</div>
-
-    <div class="jumbotron hero">
+    <!--[if lt IE 7]>
+    <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+    <![endif]-->
+    <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
-            <div class="heroBanner">
-                <h1>Tip Star</h1>
-                <p>A free tip and percentage calculator app.</p>
-                <p class="hidden-xs">Built with responsive design and offline mode, so you can use it on any device everywhere you go. Split the amount by people, round it all up and...</p>
-                <p><a class="btn btn-primary btn-lg" role="button" style="margin-top: 5px" href="app.html">Tip like a star &raquo;</a></p>
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Tip Star</a>
             </div>
-         </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="app.html">App</a></li>
+                </ul>
+            </div><!--/.navbar-collapse -->
+        </div>
     </div>
 
-<article>
-    <div class="container teaser">
-        <h2>There is more...</h2>
-        <p class="lead">Tip Star not only calculates tip, but als features a general purpose percentage calculator and a comparison mode. Now you can find out how much you really save during the next sale event. Or you could even use it to estimate taxes so the final price at checkout isn't a big surprise for you. And best of all? It's completely free. <a href="app.html">Try it now &raquo;</a></p>
-    </div>
-    <div class="container mainArticle">
-        <h2>About</h2>
-        <p>Tip Star is a simple percentage calculator that let’s you easily and instantly calculate percentages. Calculating discount, tax, or tip are just three of many examples where percentage calculation can help everyday.</p>
-        <p>The “apply” mode allows you to enter an amount and a percentage value. Different results based on your input are shown immediately. Besides adding (e.g. to calculate tips) and subtracting (discounts anyone?), it also calculates increase and reduction figures (would you like to know how much VAT you paid in Europe?). You can also easily divide the result by a number you specify. So splitting the bill becomes a little bit more easy.</p>
-        <p>The “compare” mode works similar, but allows you to enter two amounts that the tool then compares. For example you could easily check how much they increased the rent this year again.</p>
-        <p>The responsive app works on computers, tablets and mobile devices. The interface automatically adapts to provide you with the best user experience depending on your available screen size.</p>
-        <p>Not online? Not a problem. Tip Star.us uses the new HTML5 offline feature, so that you can use the app whenever you need it.</p>
-        <p>And best of it all? It’s absolutely free to use.</p>
-
-        <h3>Mobile friendly</h3>
-        <img src="apple-touch-icon-57x57-precomposed.png" style="float: left; margin-right: 10px; width: 50px" alt="Tip Star app icon"/>
-        <p>This application supports multiple display formats and offline use. Please bookmark me!<br/>
-            If you are using an iPhone or iPad, you can also easily add Tip Star to your home screen. In Safari just click on the little export icon with the arrow in the toolbar at the bottom.</p>
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="figure" style="width: 226px">
-                    <p><a href="app.html">Go to the app</a> and touch export</p>
-                    <img src="img/add-to-home-screen-001.jpg" class="screenshot" alt="Export button" />
+    <div class="container" ng-controller="HomeScreenCtrl" id="home">
+        <div class="jumbotron hero">
+            <div class="container">
+                <div class="heroBanner">
+                    <h1>Tip Star</h1>
+                    <p>A free tip and percentage calculator app.</p>
+                    <p class="hidden-xs">Built with responsive design and offline mode, so you can use it on any device everywhere you go. Split the amount by people, round it all up and...</p>
+                    <p><a class="btn btn-primary btn-lg" role="button" style="margin-top: 5px" href="app.html" analytics-on="click" analytics-event="StartAppLink" analytics-category="Homepage" analytics-label="Jumbotron">Tip like a star &raquo;</a></p>
                 </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="figure" style="width: 226px">
-                    <p>Then touch &quot;Add to Home Screen&quot;.</p>
-                    <img src="img/add-to-home-screen-002.jpg" class="screenshot" alt="Add to Home Screen" />
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="figure" style="width: 226px">
-                    <p>Confirm by touching &quot;Add&quot;</p>
-                    <img src="img/add-to-home-screen-003.jpg" class="screenshot" alt="Confirm" />
-                </div>
-            </div>
+             </div>
         </div>
 
-        <h3>Example use cases</h3>
-        <ul>
-            <li>What is $75 plus 18% tip split among 4 people?</li>
-            <li>What is the total for $60 item that is 40% off?</li>
-            <li>What is the estimated total for a $399 item plus NYC tax (8.375%)?</li>
-            <li>What is the net value of $99 including VAT tax (20%)?</li>
-        </ul>
+        <article>
+            <div class="container teaser">
+                <h2>There is more...</h2>
+                <p class="lead">Tip Star not only calculates tip, but als features a general purpose percentage calculator and a comparison mode. Now you can find out how much you really save during the next sale event. Or you could even use it to estimate taxes so the final price at checkout isn't a big surprise for you. And best of all? It's completely free. <a href="app.html" analytics-on="click" analytics-event="StartAppLink" analytics-category="Homepage" analytics-label="Teaser">Try it now &raquo;</a></p>
+            </div>
+            <div class="container mainArticle">
+                <h2>About</h2>
+                <p>Tip Star is a simple percentage calculator that let’s you easily and instantly calculate percentages. Calculating discount, tax, or tip are just three of many examples where percentage calculation can help everyday.</p>
+                <p>The “apply” mode allows you to enter an amount and a percentage value. Different results based on your input are shown immediately. Besides adding (e.g. to calculate tips) and subtracting (discounts anyone?), it also calculates increase and reduction figures (would you like to know how much VAT you paid in Europe?). You can also easily divide the result by a number you specify. So splitting the bill becomes a little bit more easy.</p>
+                <p>The “compare” mode works similar, but allows you to enter two amounts that the tool then compares. For example you could easily check how much they increased the rent this year again.</p>
+                <p>The responsive app works on computers, tablets and mobile devices. The interface automatically adapts to provide you with the best user experience depending on your available screen size.</p>
+                <p>Not online? Not a problem. Tip Star.us uses the new HTML5 offline feature, so that you can use the app whenever you need it.</p>
+                <p>And best of it all? It’s absolutely free to use.</p>
 
-        <p><a class="btn btn-primary btn-lg" href="app.html" role="button">Check it out now &raquo;</a></p>
+                <h3>Mobile friendly</h3>
+                <img src="apple-touch-icon-57x57-precomposed.png" style="float: left; margin-right: 10px; width: 50px" alt="Tip Star app icon"/>
+                <p>This application supports multiple display formats and offline use. Please bookmark me!<br/>
+                    If you are using an iPhone or iPad, you can also easily add Tip Star to your home screen. In Safari just click on the little export icon with the arrow in the toolbar at the bottom.</p>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="figure" style="width: 226px">
+                            <p><a href="app.html" analytics-on="click" analytics-event="StartAppLink" analytics-category="Homepage" analytics-label="AddToHomeScreen">Go to the app</a> and touch export</p>
+                            <img src="img/add-to-home-screen-001.jpg" class="screenshot" alt="Export button" />
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="figure" style="width: 226px">
+                            <p>Then touch &quot;Add to Home Screen&quot;.</p>
+                            <img src="img/add-to-home-screen-002.jpg" class="screenshot" alt="Add to Home Screen" />
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="figure" style="width: 226px">
+                            <p>Confirm by touching &quot;Add&quot;</p>
+                            <img src="img/add-to-home-screen-003.jpg" class="screenshot" alt="Confirm" />
+                        </div>
+                    </div>
+                </div>
 
-        <h3>Help and Feedback</h3>
-        <p>Do you have a question for us or would you like to see a new feature? We would love to hear from you! <a href="https://tip-star.uservoice.com/">Give us a shout at our support forums.</a></p>
+                <h3>Example use cases</h3>
+                <ul>
+                    <li>What is $75 plus 18% tip split among 4 people?</li>
+                    <li>What is the total for $60 item that is 40% off?</li>
+                    <li>What is the estimated total for a $399 item plus NYC tax (8.375%)?</li>
+                    <li>What is the net value of $99 including VAT tax (20%)?</li>
+                </ul>
 
+                <p><a class="btn btn-primary btn-lg" href="app.html" role="button" analytics-on="click" analytics-event="StartAppLink" analytics-category="Homepage" analytics-label="Inline">Check it out now &raquo;</a></p>
+
+                <h3>Help and Feedback</h3>
+                <p>Do you have a question for us or would you like to see a new feature? We would love to hear from you! <a href="https://tip-star.uservoice.com/" analytics-on="click" analytics-event="SupportHomeLink" analytics-category="Homepage" analytics-label="Inline">Give us a shout at our support forums.</a></p>
+
+            </div>
+        </article>
+
+        <hr>
+
+        <footer>
+            <div class="container">
+                <p>&copy; <a href="http://ruhkopf.name/" analytics-on="click" analytics-event="RuhkopfHomepageLink" analytics-category="Homepage" analytics-label="Footer">Patrick Ruhkopf</a> 2013-2014 | <a href="legal.html" analytics-on="click"  analytics-event="LegalLink" analytics-category="Homepage" analytics-label="Footer">Legal Notices</a> | <a href="https://tip-star.uservoice.com/" analytics-on="click"  analytics-event="SupportHomeLink" analytics-category="Homepage" analytics-label="Footer">Help and Contact</a></p>
+            </div>
+        </footer>
     </div>
-</article>
 
-<hr>
+    <!-- build:js scripts/vendor/vendor-combined.min.js -->
+    <script src="scripts/vendor/jquery-1.10.1.min.js"></script>
+    <script src="scripts/vendor/jquery.cookie-1.4.1.min.js"></script>
+    <script src="scripts/vendor/angular-1.2.10.min.js"></script>
+    <script src="scripts/vendor/angulartics.min.js"></script>
+    <script src="scripts/vendor/angulartics-ga.min.js"></script>
+    <script src="scripts/vendor/bootstrap-3.0.0.min.js"></script>
+    <!-- endbuild -->
 
-<footer>
-    <div class="container">
-        <p>&copy; <a href="http://ruhkopf.name/">Patrick Ruhkopf</a> 2013-2014 | <a href="legal.html">Legal Notices</a> | <a href="https://tip-star.uservoice.com/">Help and Contact</a></p>
-    </div>
-</footer>
+    <!-- build:js scripts/tipstar-<%= pkg.version %>.min.js -->
+    <script src="scripts/controllers.js"></script>
+    <script src="scripts/main.js"></script>
+    <!-- endbuild -->
 
-<!-- build:js scripts/vendor/vendor-combined.min.js -->
-<script src="scripts/vendor/jquery-1.10.1.min.js"></script>
-<script src="scripts/vendor/jquery.cookie-1.4.1.min.js"></script>
-<script src="scripts/vendor/bootstrap-3.0.0.min.js"></script>
-<!-- endbuild -->
+    <script>
+        // Include the UserVoice JavaScript SDK (only needed once on a page)
+        UserVoice=window.UserVoice||[];(function(){var uv=document.createElement('script');uv.type='text/javascript';uv.async=true;uv.src='//widget.uservoice.com/Hf8lXMiak49cHoDBzMZ2FQ.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(uv,s)})();
 
-<!-- build:js scripts/tipstar-<%= pkg.version %>.min.js -->
-<script src="scripts/controllers.js"></script>
-<script src="scripts/main.js"></script>
-<!-- endbuild -->
+        //
+        // UserVoice Javascript SDK developer documentation:
+        // https://www.uservoice.com/o/javascript-sdk
+        //
 
-<script>
-    // Include the UserVoice JavaScript SDK (only needed once on a page)
-    UserVoice=window.UserVoice||[];(function(){var uv=document.createElement('script');uv.type='text/javascript';uv.async=true;uv.src='//widget.uservoice.com/Hf8lXMiak49cHoDBzMZ2FQ.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(uv,s)})();
+        // Set colors
+        UserVoice.push(['set', {
+            accent_color: '#36AD91',
+            trigger_color: 'white',
+            trigger_background_color: '#57BCA5'
+        }]);
 
-    //
-    // UserVoice Javascript SDK developer documentation:
-    // https://www.uservoice.com/o/javascript-sdk
-    //
+        // Add default trigger to the bottom-right corner of the window:
+        UserVoice.push(['addTrigger', { mode: 'contact', trigger_position: 'bottom-right' }]);
 
-    // Set colors
-    UserVoice.push(['set', {
-        accent_color: '#36AD91',
-        trigger_color: 'white',
-        trigger_background_color: '#57BCA5'
-    }]);
+        // Or, use your own custom trigger:
+        //UserVoice.push(['addTrigger', '#id', { mode: 'contact' }]);
 
-    // Add default trigger to the bottom-right corner of the window:
-    UserVoice.push(['addTrigger', { mode: 'contact', trigger_position: 'bottom-right' }]);
-
-    // Or, use your own custom trigger:
-    //UserVoice.push(['addTrigger', '#id', { mode: 'contact' }]);
-
-    // Autoprompt for Satisfaction and SmartVote (only displayed under certain conditions)
-    UserVoice.push(['autoprompt', {}]);
-</script>
+        // Autoprompt for Satisfaction and SmartVote (only displayed under certain conditions)
+        UserVoice.push(['autoprompt', {}]);
+    </script>
 
 
 </body>
