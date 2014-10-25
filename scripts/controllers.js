@@ -57,10 +57,8 @@ tipStarApp.controller('TipStarCtrl', ['$scope', '$rootScope', '$analytics', '$ti
 
     function recalculateApply(delayInMs)
     {
-        $('body').css('cursor', 'progress');
         $timeout.cancel(timeoutPromise);
         timeoutPromise = $timeout(function() {
-            $('body').css('cursor', 'auto');
             try {
                 var percentage = parseFloat($scope.percentage.toString());
                 var amount = parseFloat($scope.amount.toString());
