@@ -395,7 +395,7 @@ h1 {
 
 .jumbotron {
     margin-bottom: 0px;
-    padding: 0px;
+    padding: 0px !important;
 }
 
 .jumbotron .container {
@@ -472,6 +472,11 @@ h1 {
         float: right;
         width: 38%;
     }
+    
+    .jumbotron .container {
+    	padding:0px;
+	}
+    
 
     /* ============
         WIDE: Main
